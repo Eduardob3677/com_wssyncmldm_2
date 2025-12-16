@@ -1,0 +1,92 @@
+.class public final synthetic Lcom/idm/fotaagent/enabler/ui/common/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/util/function/Consumer;
+
+
+# instance fields
+.field public final synthetic c:I
+
+.field public final synthetic d:Ljava/lang/Object;
+
+.field public final synthetic e:Ljava/lang/Object;
+
+
+# direct methods
+.method public synthetic constructor <init>(Ljava/lang/Object;ILjava/lang/Object;)V
+    .locals 0
+
+    iput p2, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->c:I
+
+    iput-object p1, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->d:Ljava/lang/Object;
+
+    iput-object p3, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->e:Ljava/lang/Object;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final accept(Ljava/lang/Object;)V
+    .locals 1
+
+    iget v0, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->c:I
+
+    packed-switch v0, :pswitch_data_0
+
+    iget-object v0, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->e:Ljava/lang/Object;
+
+    check-cast v0, Le/n;
+
+    check-cast p1, Landroidx/databinding/v;
+
+    iget-object p0, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->d:Ljava/lang/Object;
+
+    check-cast p0, Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Inflater$Container;
+
+    invoke-static {p0, v0, p1}, Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Inflater$Container;->a(Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Inflater$Container;Le/n;Landroidx/databinding/v;)V
+
+    return-void
+
+    :pswitch_0
+    iget-object v0, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->e:Ljava/lang/Object;
+
+    check-cast v0, Landroid/content/Context;
+
+    check-cast p1, Ljava/lang/Integer;
+
+    iget-object p0, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->d:Ljava/lang/Object;
+
+    check-cast p0, Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Managed$WithButtons$WithTwoProgressBars$ProgressView;
+
+    invoke-static {p0, v0, p1}, Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Managed$WithButtons$WithTwoProgressBars$ProgressView;->a(Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Managed$WithButtons$WithTwoProgressBars$ProgressView;Landroid/content/Context;Ljava/lang/Integer;)V
+
+    return-void
+
+    :pswitch_1
+    iget-object v0, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->e:Ljava/lang/Object;
+
+    check-cast v0, Lcom/idm/fotaagent/abupdate/abenabler/ui/downloadandinstallprogress/ProgressViewParams;
+
+    check-cast p1, Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Managed$WithButtons$WithTwoProgressBars$ProgressView;
+
+    iget-object p0, p0, Lcom/idm/fotaagent/enabler/ui/common/a;->d:Ljava/lang/Object;
+
+    check-cast p0, Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Managed$WithButtons$WithTwoProgressBars;
+
+    invoke-static {p0, v0, p1}, Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Managed$WithButtons$WithTwoProgressBars;->n(Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Managed$WithButtons$WithTwoProgressBars;Lcom/idm/fotaagent/abupdate/abenabler/ui/downloadandinstallprogress/ProgressViewParams;Lcom/idm/fotaagent/enabler/ui/common/BaseActivity$Managed$WithButtons$WithTwoProgressBars$ProgressView;)V
+
+    return-void
+
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method

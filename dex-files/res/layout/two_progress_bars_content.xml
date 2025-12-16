@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/content_background_color" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.appcompat.widget.SeslProgressBar android:id="@id/download_progress_circle" android:indeterminate="true" style="@style/Widget.ProgressCircle" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/two_progress_bars" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <include android:layout_gravity="bottom" android:id="@id/download_and_install_step" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="@dimen/spacing_horizontal_small" layout="@layout/progress_bar_with_two_textviews" />
+        <include android:layout_gravity="bottom" android:id="@id/verify_step" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/progress_bar_with_two_textviews" />
+    </LinearLayout>
+</LinearLayout>

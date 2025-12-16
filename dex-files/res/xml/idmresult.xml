@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:key="dmmain"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:key="serverurl" android:defaultValue="true" />
+    <Preference android:key="serverip" android:defaultValue="true" />
+    <Preference android:key="authtype" android:defaultValue="true" />
+    <Preference android:key="objectsize" android:defaultValue="true" />
+    <Preference android:key="correlator" android:defaultValue="true" />
+    <Preference android:key="result" android:defaultValue="true" />
+</PreferenceScreen>
