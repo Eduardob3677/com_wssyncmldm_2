@@ -10,6 +10,16 @@
         </trust-anchors>
     </base-config>
     
+    <!-- Domain-specific configuration for dms.ospserver.net -->
+    <!-- Disables SSL verification and allows traffic redirection -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">dms.ospserver.net</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    
     <!-- Debug overrides: allow all certificates and cleartext traffic -->
     <debug-overrides>
         <trust-anchors>
