@@ -186,17 +186,9 @@
 
 # virtual methods
 .method public onCreate(Landroid/os/Bundle;)V
-    .locals 2
+    .locals 0
 
     invoke-super {p0, p1}, Landroidx/preference/z;->onCreate(Landroid/os/Bundle;)V
-
-    invoke-virtual {p0}, Landroidx/preference/z;->getPreferenceManager()Landroidx/preference/F;
-
-    move-result-object p1
-
-    const-string v0, "mock_device_prefs"
-
-    invoke-virtual {p1, v0}, Landroidx/preference/F;->v(Ljava/lang/String;)V
 
     # Initialize with real device values on first launch
     invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->initializeDefaultValues()V
