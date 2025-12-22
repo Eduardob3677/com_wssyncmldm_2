@@ -36,7 +36,7 @@
     # Check if already initialized
     const-string v2, "_initialized"
 
-    invoke-interface {v1, v2, v2}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+    invoke-interface {v1, v2}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
 
     move-result v3
 
