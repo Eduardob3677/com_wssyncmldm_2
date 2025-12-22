@@ -6,4 +6,5 @@
     <androidx.preference.Preference android:title="@string/dm_settings" android:key="@string/dm_settings" android:summary="Configure DM Account Profile" app:fragment="com.idm.fotaagent.enabler.ui.admin.setting.AdminSettingFragment" />
     <androidx.preference.EditTextPreference android:title="@string/command" android:key="@string/command" android:summary="Pop up dialog to enter command" />
     <androidx.preference.Preference android:title="@string/device_status" android:key="@string/device_status" android:summary="Click to check" />
+    <androidx.preference.Preference android:title="@string/device_override" android:key="@string/device_override" android:summary="@string/device_override_summary" app:fragment="com.idm.fotaagent.enabler.ui.admin.deviceoverride.DeviceOverrideFragment" />
 </androidx.preference.PreferenceScreen>

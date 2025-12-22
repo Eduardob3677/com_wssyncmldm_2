@@ -102,6 +102,53 @@
 .method public idmGetDeviceID(Landroid/content/Context;)Ljava/lang/String;
     .locals 2
 
+    # Check for override IMEI first
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/deviceoverride/DeviceOverrideHelper;->getOverrideImei(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object p0
+
+    if-eqz p0, :check_meid
+
+    # Return overridden IMEI with prefix
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    const-string v1, "IMEI:"
+
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+
+    :check_meid
+    # Check for override MEID
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/deviceoverride/DeviceOverrideHelper;->getOverrideMeid(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object p0
+
+    if-eqz p0, :get_real_device_id
+
+    # Return overridden MEID with prefix
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    const-string v1, "MEID:"
+
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+
+    :get_real_device_id
+    # Original code to get real device ID
     const-string p0, "phone"
 
     invoke-virtual {p1, p0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -169,6 +216,17 @@
 .method public idmGetDeviceLanguage(Landroid/content/Context;)Ljava/lang/String;
     .locals 1
 
+    # Check for override language first
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/deviceoverride/DeviceOverrideHelper;->getOverrideLanguage(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object p0
+
+    if-eqz p0, :get_real_language
+
+    return-object p0
+
+    :get_real_language
+    # Original code to get real device language
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object p0

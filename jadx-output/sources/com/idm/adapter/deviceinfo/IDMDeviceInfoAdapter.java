@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import com.idm.adapter.common.IDMCommonUtils;
 import com.idm.core.security.IDMSecurityImpl;
 import com.idm.fotaagent.enabler.fumo.IDMFumoExtInterface;
+import com.idm.fotaagent.enabler.ui.admin.deviceoverride.DeviceOverrideHelper;
 import com.samsung.android.lib.episode.EternalContract;
 import java.util.ArrayList;
 
@@ -36,6 +37,19 @@ public abstract class IDMDeviceInfoAdapter {
     }
 
     public String idmGetDeviceID(Context context) {
+        // Check for override IMEI first
+        String overrideImei = DeviceOverrideHelper.getOverrideImei(context);
+        if (overrideImei != null) {
+            return "IMEI:" + overrideImei;
+        }
+        
+        // Check for override MEID
+        String overrideMeid = DeviceOverrideHelper.getOverrideMeid(context);
+        if (overrideMeid != null) {
+            return "MEID:" + overrideMeid;
+        }
+        
+        // Original code to get real device ID
         TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(EternalContract.DEVICE_TYPE_PHONE);
         if (telephonyManager == null) {
             return null;
@@ -47,6 +61,13 @@ public abstract class IDMDeviceInfoAdapter {
     }
 
     public String idmGetDeviceLanguage(Context context) {
+        // Check for override language first
+        String overrideLanguage = DeviceOverrideHelper.getOverrideLanguage(context);
+        if (overrideLanguage != null) {
+            return overrideLanguage;
+        }
+        
+        // Original code to get real device language
         Configuration configuration = context.getResources().getConfiguration();
         return configuration.getLocales().get(0).getLanguage() + "-" + configuration.getLocales().get(0).getCountry();
     }

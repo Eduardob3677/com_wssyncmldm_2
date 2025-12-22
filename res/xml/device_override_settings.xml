@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.preference.SwitchPreference
+        android:key="@string/device_override_enable"
+        android:title="@string/device_override_enable"
+        android:summary="@string/device_override_enable_summary"
+        android:defaultValue="false" />
+    
+    <androidx.preference.EditTextPreference
+        android:key="@string/device_override_imei"
+        android:title="@string/device_override_imei"
+        android:summary="@string/device_override_imei_summary"
+        android:dependency="@string/device_override_enable" />
+    
+    <androidx.preference.EditTextPreference
+        android:key="@string/device_override_meid"
+        android:title="@string/device_override_meid"
+        android:summary="@string/device_override_meid_summary"
+        android:dependency="@string/device_override_enable" />
+    
+    <androidx.preference.EditTextPreference
+        android:key="@string/device_override_manufacturer"
+        android:title="@string/device_override_manufacturer"
+        android:summary="@string/device_override_manufacturer_summary"
+        android:dependency="@string/device_override_enable" />
+    
+    <androidx.preference.EditTextPreference
+        android:key="@string/device_override_language"
+        android:title="@string/device_override_language"
+        android:summary="@string/device_override_language_summary"
+        android:dependency="@string/device_override_enable" />
+</androidx.preference.PreferenceScreen>

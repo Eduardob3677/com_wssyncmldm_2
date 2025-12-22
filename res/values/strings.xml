@@ -352,4 +352,16 @@ https://www.samsung.com/global/download/smartswitchmac/"</string>
     <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
     <string name="v7_preference_off">OFF</string>
     <string name="v7_preference_on">ON</string>
+    <string name="device_override">Device Override Settings</string>
+    <string name="device_override_summary">Configure mock device values</string>
+    <string name="device_override_enable">Enable Device Override</string>
+    <string name="device_override_enable_summary">Use mock values instead of real device values</string>
+    <string name="device_override_imei">Override IMEI</string>
+    <string name="device_override_imei_summary">Enter mock IMEI (leave empty to use real)</string>
+    <string name="device_override_meid">Override MEID</string>
+    <string name="device_override_meid_summary">Enter mock MEID (leave empty to use real)</string>
+    <string name="device_override_manufacturer">Override Manufacturer</string>
+    <string name="device_override_manufacturer_summary">Enter mock manufacturer (leave empty to use real)</string>
+    <string name="device_override_language">Override Language</string>
+    <string name="device_override_language_summary">Enter mock language (e.g., en-US, leave empty to use real)</string>
 </resources>
