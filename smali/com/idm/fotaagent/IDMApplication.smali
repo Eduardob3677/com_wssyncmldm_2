@@ -4,7 +4,7 @@
 
 
 # static fields
-.field private static context:Landroid/content/Context; = null
+.field public static context:Landroid/content/Context; = null
 
 .field private static isLogEnabled:Z = false
 
