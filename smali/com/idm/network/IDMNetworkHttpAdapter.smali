@@ -422,30 +422,7 @@
 
     check-cast p0, Ljavax/net/ssl/HttpsURLConnection;
 
-    invoke-virtual {p5}, Lcom/idm/adapter/networkinfo/IDMNetworkInfoAdapter;->idmGetIsSSLCheck()Z
-
-    move-result p1
-
-    if-eqz p1, :cond_1
-
-    const-string p1, "set HostNameVerifier : default"
-
-    invoke-static {p1}, Lcom/idm/adapter/logmanager/IDMDebug;->I(Ljava/lang/String;)V
-
-    invoke-static {}, Ljavax/net/ssl/HttpsURLConnection;->getDefaultHostnameVerifier()Ljavax/net/ssl/HostnameVerifier;
-
-    move-result-object p1
-
-    new-instance p5, Lcom/idm/network/a;
-
-    invoke-direct {p5, p1}, Lcom/idm/network/a;-><init>(Ljavax/net/ssl/HostnameVerifier;)V
-
-    invoke-virtual {p0, p5}, Ljavax/net/ssl/HttpsURLConnection;->setHostnameVerifier(Ljavax/net/ssl/HostnameVerifier;)V
-
-    goto :goto_1
-
-    :cond_1
-    const-string p1, "set HostNameVerifier : true"
+    const-string p1, "set HostNameVerifier : bypassed (always true)"
 
     invoke-static {p1}, Lcom/idm/adapter/logmanager/IDMDebug;->I(Ljava/lang/String;)V
 
@@ -457,7 +434,6 @@
 
     invoke-virtual {p0, p1}, Ljavax/net/ssl/HttpsURLConnection;->setHostnameVerifier(Ljavax/net/ssl/HostnameVerifier;)V
 
-    :goto_1
     invoke-virtual {p0, p4}, Ljavax/net/ssl/HttpsURLConnection;->setSSLSocketFactory(Ljavax/net/ssl/SSLSocketFactory;)V
 
     :cond_2

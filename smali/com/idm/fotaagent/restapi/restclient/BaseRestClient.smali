@@ -1363,27 +1363,18 @@
 .method public setHostNameIfSslDisabled()V
     .locals 1
 
-    new-instance v0, Lcom/idm/fotaagent/database/room/data/repository/AdminRepository;
+    const-string v0, "setHostNameIfSslDisabled - BYPASSED (always permissive)"
 
-    iget-object p0, p0, Lcom/idm/fotaagent/restapi/restclient/BaseRestClient;->context:Landroid/content/Context;
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/log/Log;->I(Ljava/lang/Object;)V
 
-    invoke-direct {v0, p0}, Lcom/idm/fotaagent/database/room/data/repository/AdminRepository;-><init>(Landroid/content/Context;)V
+    new-instance v0, Lcom/idm/fotaagent/restapi/restclient/a;
 
-    invoke-virtual {v0}, Lcom/idm/fotaagent/database/room/data/repository/AdminRepository;->isSslCheckEnabled()Z
+    const/4 p0, 0x0
 
-    move-result p0
+    invoke-direct {v0, p0}, Lcom/idm/fotaagent/restapi/restclient/a;-><init>(I)V
 
-    if-nez p0, :cond_0
+    invoke-static {v0}, Ljavax/net/ssl/HttpsURLConnection;->setDefaultHostnameVerifier(Ljavax/net/ssl/HostnameVerifier;)V
 
-    new-instance p0, Lcom/idm/fotaagent/restapi/restclient/a;
-
-    const/4 v0, 0x0
-
-    invoke-direct {p0, v0}, Lcom/idm/fotaagent/restapi/restclient/a;-><init>(I)V
-
-    invoke-static {p0}, Ljavax/net/ssl/HttpsURLConnection;->setDefaultHostnameVerifier(Ljavax/net/ssl/HostnameVerifier;)V
-
-    :cond_0
     return-void
 .end method
 
