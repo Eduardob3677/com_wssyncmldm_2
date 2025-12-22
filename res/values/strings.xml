@@ -270,6 +270,18 @@ https://www.samsung.com/global/download/smartswitchmac/"</string>
     <string name="mock_device_mnc_summary">Mock MNC value</string>
     <string name="mock_device_sim_operator">SIM Operator</string>
     <string name="mock_device_sim_operator_summary">Mock SIM operator code (MCC+MNC)</string>
+    <string name="mock_device_knox_status">Knox Status</string>
+    <string name="mock_device_knox_status_summary">Mock Knox activation status</string>
+    <string name="mock_device_knox_version">Knox Version</string>
+    <string name="mock_device_knox_version_summary">Mock Knox version (e.g., 3.10)</string>
+    <string name="mock_device_warranty_bit">Warranty Bit</string>
+    <string name="mock_device_warranty_bit_summary">Mock warranty bit status (0=Official, 1=Custom)</string>
+    <string name="mock_device_official_status">Official Device Status</string>
+    <string name="mock_device_official_status_summary">Device is official/unmodified</string>
+    <string name="mock_device_root_status">Root Status</string>
+    <string name="mock_device_root_status_summary">Device root detection status</string>
+    <string name="mock_device_selinux_status">SELinux Status</string>
+    <string name="mock_device_selinux_status_summary">SELinux enforcing status</string>
     <string name="error_a11y_label">Error: invalid</string>
     <string name="error_icon_content_description">Error</string>
     <string name="expand_button_title">Advanced</string>

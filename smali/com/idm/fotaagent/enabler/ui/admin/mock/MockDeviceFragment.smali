@@ -123,6 +123,48 @@
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
+    # Set Knox status (default true)
+    const-string p0, "mock_device_knox_status"
+
+    const/4 v3, 0x1
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    # Set Knox version (default 3.10)
+    const-string p0, "mock_device_knox_version"
+
+    const-string v3, "3.10"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    # Set warranty bit (default 0 = official)
+    const-string p0, "mock_device_warranty_bit"
+
+    const-string v3, "0"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    # Set official status (default true)
+    const-string p0, "mock_device_official_status"
+
+    const/4 v3, 0x1
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    # Set root status (default false)
+    const-string p0, "mock_device_root_status"
+
+    const/4 v3, 0x0
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    # Set SELinux status (default true)
+    const-string p0, "mock_device_selinux_status"
+
+    const/4 v3, 0x1
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
     # Mark as initialized
     const/4 v0, 0x1
 

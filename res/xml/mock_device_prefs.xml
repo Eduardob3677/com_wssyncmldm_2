@@ -95,4 +95,44 @@
             android:title="@string/mock_device_language"
             android:summary="@string/mock_device_language_summary" />
     </androidx.preference.PreferenceCategory>
+    
+    <androidx.preference.PreferenceCategory
+        android:title="Knox and Security"
+        android:dependency="mock_device_enabled">
+        
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="mock_device_knox_status"
+            android:title="@string/mock_device_knox_status"
+            android:summary="@string/mock_device_knox_status_summary"
+            android:defaultValue="true" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_knox_version"
+            android:title="@string/mock_device_knox_version"
+            android:summary="@string/mock_device_knox_version_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_warranty_bit"
+            android:title="@string/mock_device_warranty_bit"
+            android:summary="@string/mock_device_warranty_bit_summary"
+            android:inputType="number" />
+        
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="mock_device_official_status"
+            android:title="@string/mock_device_official_status"
+            android:summary="@string/mock_device_official_status_summary"
+            android:defaultValue="true" />
+        
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="mock_device_root_status"
+            android:title="@string/mock_device_root_status"
+            android:summary="@string/mock_device_root_status_summary"
+            android:defaultValue="false" />
+        
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="mock_device_selinux_status"
+            android:title="@string/mock_device_selinux_status"
+            android:summary="@string/mock_device_selinux_status_summary"
+            android:defaultValue="true" />
+    </androidx.preference.PreferenceCategory>
 </androidx.preference.PreferenceScreen>

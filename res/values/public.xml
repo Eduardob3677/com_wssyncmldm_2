@@ -4305,6 +4305,18 @@
     <public type="string" name="mock_device_mnc_summary" id="0x7f130216" />
     <public type="string" name="mock_device_sim_operator" id="0x7f130217" />
     <public type="string" name="mock_device_sim_operator_summary" id="0x7f130218" />
+    <public type="string" name="mock_device_knox_status" id="0x7f130219" />
+    <public type="string" name="mock_device_knox_status_summary" id="0x7f13021a" />
+    <public type="string" name="mock_device_knox_version" id="0x7f13021b" />
+    <public type="string" name="mock_device_knox_version_summary" id="0x7f13021c" />
+    <public type="string" name="mock_device_warranty_bit" id="0x7f13021d" />
+    <public type="string" name="mock_device_warranty_bit_summary" id="0x7f13021e" />
+    <public type="string" name="mock_device_official_status" id="0x7f13021f" />
+    <public type="string" name="mock_device_official_status_summary" id="0x7f130220" />
+    <public type="string" name="mock_device_root_status" id="0x7f130221" />
+    <public type="string" name="mock_device_root_status_summary" id="0x7f130222" />
+    <public type="string" name="mock_device_selinux_status" id="0x7f130223" />
+    <public type="string" name="mock_device_selinux_status_summary" id="0x7f130224" />
     <public type="style" name="AlertDialog.AppCompat" id="0x7f140000" />
     <public type="style" name="AlertDialog.AppCompat.Light" id="0x7f140001" />
     <public type="style" name="Animation.AppCompat.Dialog" id="0x7f140002" />

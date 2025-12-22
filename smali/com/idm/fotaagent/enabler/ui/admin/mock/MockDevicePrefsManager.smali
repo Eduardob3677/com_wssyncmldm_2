@@ -38,6 +38,18 @@
 
 .field private static final KEY_SIM_OPERATOR:Ljava/lang/String; = "mock_device_sim_operator"
 
+.field private static final KEY_KNOX_STATUS:Ljava/lang/String; = "mock_device_knox_status"
+
+.field private static final KEY_KNOX_VERSION:Ljava/lang/String; = "mock_device_knox_version"
+
+.field private static final KEY_WARRANTY_BIT:Ljava/lang/String; = "mock_device_warranty_bit"
+
+.field private static final KEY_OFFICIAL_STATUS:Ljava/lang/String; = "mock_device_official_status"
+
+.field private static final KEY_ROOT_STATUS:Ljava/lang/String; = "mock_device_root_status"
+
+.field private static final KEY_SELINUX_STATUS:Ljava/lang/String; = "mock_device_selinux_status"
+
 
 # direct methods
 .method public constructor <init>()V
@@ -348,4 +360,112 @@
     move-result-object p0
 
     return-object p0
+.end method
+
+.method public static getKnoxStatus(Landroid/content/Context;)Z
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_knox_status"
+
+    const/4 v1, 0x1
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static getKnoxVersion(Landroid/content/Context;)Ljava/lang/String;
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_knox_version"
+
+    const/4 v1, 0x0
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getWarrantyBit(Landroid/content/Context;)Ljava/lang/String;
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_warranty_bit"
+
+    const-string v1, "0"
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getOfficialStatus(Landroid/content/Context;)Z
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_official_status"
+
+    const/4 v1, 0x1
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static getRootStatus(Landroid/content/Context;)Z
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_root_status"
+
+    const/4 v1, 0x0
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static getSelinuxStatus(Landroid/content/Context;)Z
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_selinux_status"
+
+    const/4 v1, 0x1
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result p0
+
+    return p0
 .end method
