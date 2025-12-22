@@ -238,6 +238,22 @@
 .method public static getIMEI(Landroid/content/Context;)Ljava/lang/String;
     .locals 3
 
+    # Check if mock is enabled and return mock value
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_real
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getDeviceId(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
     invoke-static {p0}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getTelephonyManager(Landroid/content/Context;)Landroid/telephony/TelephonyManager;
 
     move-result-object p0
