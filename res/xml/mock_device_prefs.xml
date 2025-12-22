@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.preference.PreferenceScreen 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:sharedPreferencesName="mock_device_prefs">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.preference.SwitchPreferenceCompat
         android:key="mock_device_enabled"
         android:title="@string/mock_device_enabled"
