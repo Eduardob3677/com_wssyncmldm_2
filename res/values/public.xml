@@ -4151,6 +4151,10 @@
     <public type="string" name="device_status" id="0x7f130110" />
     <public type="string" name="dm_settings" id="0x7f130111" />
     <public type="string" name="download_and_install" id="0x7f130112" />
+    <public type="string" name="mock_device_values" id="0x7f130113" />
+    <public type="string" name="mock_device_values_summary" id="0x7f130114" />
+    <public type="string" name="mock_device_enabled" id="0x7f130115" />
+    <public type="string" name="mock_device_enabled_summary" id="0x7f130116" />
     <public type="string" name="error_a11y_label" id="0x7f130117" />
     <public type="string" name="error_icon_content_description" id="0x7f130118" />
     <public type="string" name="expand_button_title" id="0x7f130119" />
@@ -4269,6 +4273,52 @@
     <public type="string" name="summary_collapsed_preference_list" id="0x7f1301f6" />
     <public type="string" name="v7_preference_off" id="0x7f1301f7" />
     <public type="string" name="v7_preference_on" id="0x7f1301f8" />
+    <public type="string" name="mock_device_manufacturer" id="0x7f1301f9" />
+    <public type="string" name="mock_device_manufacturer_summary" id="0x7f1301fa" />
+    <public type="string" name="mock_device_model" id="0x7f1301fb" />
+    <public type="string" name="mock_device_model_summary" id="0x7f1301fc" />
+    <public type="string" name="mock_device_id" id="0x7f1301fd" />
+    <public type="string" name="mock_device_id_summary" id="0x7f1301fe" />
+    <public type="string" name="mock_device_imsi" id="0x7f1301ff" />
+    <public type="string" name="mock_device_imsi_summary" id="0x7f130200" />
+    <public type="string" name="mock_device_language" id="0x7f130201" />
+    <public type="string" name="mock_device_language_summary" id="0x7f130202" />
+    <public type="string" name="mock_device_bootloader" id="0x7f130203" />
+    <public type="string" name="mock_device_bootloader_summary" id="0x7f130204" />
+    <public type="string" name="mock_device_software_version" id="0x7f130205" />
+    <public type="string" name="mock_device_software_version_summary" id="0x7f130206" />
+    <public type="string" name="mock_device_pda_version" id="0x7f130207" />
+    <public type="string" name="mock_device_pda_version_summary" id="0x7f130208" />
+    <public type="string" name="mock_device_csc_version" id="0x7f130209" />
+    <public type="string" name="mock_device_csc_version_summary" id="0x7f13020a" />
+    <public type="string" name="mock_device_phone_version" id="0x7f13020b" />
+    <public type="string" name="mock_device_phone_version_summary" id="0x7f13020c" />
+    <public type="string" name="mock_device_security_patch" id="0x7f13020d" />
+    <public type="string" name="mock_device_security_patch_summary" id="0x7f13020e" />
+    <public type="string" name="mock_device_build_type" id="0x7f13020f" />
+    <public type="string" name="mock_device_build_type_summary" id="0x7f130210" />
+    <public type="string" name="mock_device_serial" id="0x7f130211" />
+    <public type="string" name="mock_device_serial_summary" id="0x7f130212" />
+    <public type="string" name="mock_device_mcc" id="0x7f130213" />
+    <public type="string" name="mock_device_mcc_summary" id="0x7f130214" />
+    <public type="string" name="mock_device_mnc" id="0x7f130215" />
+    <public type="string" name="mock_device_mnc_summary" id="0x7f130216" />
+    <public type="string" name="mock_device_sim_operator" id="0x7f130217" />
+    <public type="string" name="mock_device_sim_operator_summary" id="0x7f130218" />
+    <public type="string" name="mock_device_knox_status" id="0x7f130219" />
+    <public type="string" name="mock_device_knox_status_summary" id="0x7f13021a" />
+    <public type="string" name="mock_device_knox_version" id="0x7f13021b" />
+    <public type="string" name="mock_device_knox_version_summary" id="0x7f13021c" />
+    <public type="string" name="mock_device_warranty_bit" id="0x7f13021d" />
+    <public type="string" name="mock_device_warranty_bit_summary" id="0x7f13021e" />
+    <public type="string" name="mock_device_official_status" id="0x7f13021f" />
+    <public type="string" name="mock_device_official_status_summary" id="0x7f130220" />
+    <public type="string" name="mock_device_root_status" id="0x7f130221" />
+    <public type="string" name="mock_device_root_status_summary" id="0x7f130222" />
+    <public type="string" name="mock_device_selinux_status" id="0x7f130223" />
+    <public type="string" name="mock_device_selinux_status_summary" id="0x7f130224" />
+    <public type="string" name="mock_device_bootloader_locked" id="0x7f130225" />
+    <public type="string" name="mock_device_bootloader_locked_summary" id="0x7f130226" />
     <public type="style" name="AlertDialog.AppCompat" id="0x7f140000" />
     <public type="style" name="AlertDialog.AppCompat.Light" id="0x7f140001" />
     <public type="style" name="Animation.AppCompat.Dialog" id="0x7f140002" />
@@ -5219,4 +5269,5 @@
     <public type="xml" name="idmresult" id="0x7f160001" />
     <public type="xml" name="meta_042_fota" id="0x7f160002" />
     <public type="xml" name="ut_mainpref" id="0x7f160003" />
+    <public type="xml" name="mock_device_prefs" id="0x7f160004" />
 </resources>

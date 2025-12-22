@@ -37,6 +37,24 @@
 .method private idmGetDeviceIMSIFromSIM(Landroid/content/Context;)Ljava/lang/String;
     .locals 2
 
+    # Check if mock device is enabled
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_real
+
+    # Return mock IMSI if enabled
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getImsi(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object p0
+
+    if-eqz p0, :cond_real
+
+    return-object p0
+
+    :cond_real
+    # Original code for real IMSI
     const-string p0, "000000000000000"
 
     const/4 v0, 0x0
@@ -102,6 +120,24 @@
 .method public idmGetDeviceID(Landroid/content/Context;)Ljava/lang/String;
     .locals 2
 
+    # Check if mock device is enabled
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_real
+
+    # Return mock device ID if enabled
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getDeviceId(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
+    # Original code for real device ID
     const-string p0, "phone"
 
     invoke-virtual {p1, p0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -169,6 +205,24 @@
 .method public idmGetDeviceLanguage(Landroid/content/Context;)Ljava/lang/String;
     .locals 1
 
+    # Check if mock device is enabled
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_real
+
+    # Return mock language if enabled
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getLanguage(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object p0
+
+    if-eqz p0, :cond_real
+
+    return-object p0
+
+    :cond_real
+    # Original code for real device language
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object p0

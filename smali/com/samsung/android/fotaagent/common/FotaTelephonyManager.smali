@@ -342,6 +342,24 @@
 .method public static getSimOperator(Landroid/content/Context;)Ljava/lang/String;
     .locals 1
 
+    # Check if mock device is enabled
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_real
+
+    # Return mock SIM operator if enabled
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getSimOperator(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
+    # Original code
     invoke-static {}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getDataSubId()I
 
     move-result v0
