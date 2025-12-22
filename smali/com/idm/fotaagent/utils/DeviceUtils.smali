@@ -91,8 +91,28 @@
 .end method
 
 .method public static getSerialNumber()Ljava/lang/String;
-    .locals 1
+    .locals 2
 
+    # Check if mock is enabled and return mock value
+    sget-object v0, Lcom/idm/fotaagent/IDMApplication;->context:Landroid/content/Context;
+
+    if-eqz v0, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getSerial(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
     :try_start_0
     invoke-static {}, Landroid/os/Build;->getSerial()Ljava/lang/String;
 
@@ -429,6 +449,26 @@
 .method public static readModelName()Ljava/lang/String;
     .locals 3
 
+    # Check if mock is enabled and return mock value
+    sget-object v0, Lcom/idm/fotaagent/IDMApplication;->context:Landroid/content/Context;
+
+    if-eqz v0, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getModel(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
     sget-object v0, Landroid/os/Build;->MODEL:Ljava/lang/String;
 
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
@@ -475,8 +515,28 @@
 .end method
 
 .method public static readPDAVersion()Ljava/lang/String;
-    .locals 1
+    .locals 2
 
+    # Check if mock is enabled and return mock value
+    sget-object v0, Lcom/idm/fotaagent/IDMApplication;->context:Landroid/content/Context;
+
+    if-eqz v0, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPDAVersion(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
     const-string v0, "ro.build.PDA"
 
     invoke-static {v0}, Lcom/wssyncmldm/Flavor$DeviceUtils;->readPDAVersion(Ljava/lang/String;)Ljava/lang/String;

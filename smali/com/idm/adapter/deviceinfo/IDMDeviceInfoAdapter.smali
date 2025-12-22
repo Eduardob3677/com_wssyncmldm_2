@@ -277,8 +277,28 @@
 .end method
 
 .method public idmGetDeviceManufacturer()Ljava/lang/String;
-    .locals 0
+    .locals 2
 
+    # Check if mock is enabled and return mock value
+    sget-object v0, Lcom/idm/fotaagent/IDMApplication;->context:Landroid/content/Context;
+
+    if-eqz v0, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getManufacturer(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
     sget-object p0, Landroid/os/Build;->MANUFACTURER:Ljava/lang/String;
 
     return-object p0
