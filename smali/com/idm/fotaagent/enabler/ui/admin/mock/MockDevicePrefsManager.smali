@@ -50,6 +50,8 @@
 
 .field private static final KEY_SELINUX_STATUS:Ljava/lang/String; = "mock_device_selinux_status"
 
+.field private static final KEY_BOOTLOADER_LOCKED:Ljava/lang/String; = "mock_device_bootloader_locked"
+
 
 # direct methods
 .method public constructor <init>()V
@@ -460,6 +462,24 @@
     move-result-object p0
 
     const-string v0, "mock_device_selinux_status"
+
+    const/4 v1, 0x1
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static getBootloaderLocked(Landroid/content/Context;)Z
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_bootloader_locked"
 
     const/4 v1, 0x1
 

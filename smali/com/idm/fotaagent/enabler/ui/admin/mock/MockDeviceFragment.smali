@@ -165,6 +165,13 @@
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
 
+    # Set bootloader locked status (default true)
+    const-string p0, "mock_device_bootloader_locked"
+
+    const/4 v3, 0x1
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
     # Mark as initialized
     const/4 v0, 0x1
 

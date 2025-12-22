@@ -282,6 +282,8 @@ https://www.samsung.com/global/download/smartswitchmac/"</string>
     <string name="mock_device_root_status_summary">Device root detection status</string>
     <string name="mock_device_selinux_status">SELinux Status</string>
     <string name="mock_device_selinux_status_summary">SELinux enforcing status</string>
+    <string name="mock_device_bootloader_locked">Bootloader Locked</string>
+    <string name="mock_device_bootloader_locked_summary">Bootloader lock status (locked=secure, unlocked=modified)</string>
     <string name="error_a11y_label">Error: invalid</string>
     <string name="error_icon_content_description">Error</string>
     <string name="expand_button_title">Advanced</string>

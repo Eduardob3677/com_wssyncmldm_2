@@ -4317,6 +4317,8 @@
     <public type="string" name="mock_device_root_status_summary" id="0x7f130222" />
     <public type="string" name="mock_device_selinux_status" id="0x7f130223" />
     <public type="string" name="mock_device_selinux_status_summary" id="0x7f130224" />
+    <public type="string" name="mock_device_bootloader_locked" id="0x7f130225" />
+    <public type="string" name="mock_device_bootloader_locked_summary" id="0x7f130226" />
     <public type="style" name="AlertDialog.AppCompat" id="0x7f140000" />
     <public type="style" name="AlertDialog.AppCompat.Light" id="0x7f140001" />
     <public type="style" name="Animation.AppCompat.Dialog" id="0x7f140002" />

@@ -134,5 +134,11 @@
             android:title="@string/mock_device_selinux_status"
             android:summary="@string/mock_device_selinux_status_summary"
             android:defaultValue="true" />
+        
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="mock_device_bootloader_locked"
+            android:title="@string/mock_device_bootloader_locked"
+            android:summary="@string/mock_device_bootloader_locked_summary"
+            android:defaultValue="true" />
     </androidx.preference.PreferenceCategory>
 </androidx.preference.PreferenceScreen>
