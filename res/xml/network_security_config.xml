@@ -10,6 +10,41 @@
         </trust-anchors>
     </base-config>
     
+    <!-- Domain-specific configuration for ospserver.net domains -->
+    <!-- Disables SSL verification and allows traffic redirection -->
+    <!-- Covers all ospserver.net subdomains including: -->
+    <!-- www.ospserver.net, cfota1.ospserver.net, dms.ospserver.net, -->
+    <!-- fota-cloud-dn.ospserver.net, cfota2.ospserver.net, cfota3.ospserver.net -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">ospserver.net</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    
+    <!-- Domain-specific configuration for samsungdm.com domains -->
+    <!-- Disables SSL verification and allows traffic redirection -->
+    <!-- Covers ifota-apis.samsungdm.com and other subdomains -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">samsungdm.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    
+    <!-- Domain-specific configuration for samsungdms.net domains -->
+    <!-- Disables SSL verification and allows traffic redirection -->
+    <!-- Covers stg-fota-cloud.samsungdms.net and other subdomains -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">samsungdms.net</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    
     <!-- Debug overrides: allow all certificates and cleartext traffic -->
     <debug-overrides>
         <trust-anchors>
