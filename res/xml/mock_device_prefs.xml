@@ -6,33 +6,93 @@
         android:summary="@string/mock_device_enabled_summary"
         android:defaultValue="false" />
     
-    <androidx.preference.EditTextPreference
-        android:key="mock_device_manufacturer"
-        android:title="@string/mock_device_manufacturer"
-        android:summary="@string/mock_device_manufacturer_summary"
-        android:dependency="mock_device_enabled" />
+    <androidx.preference.PreferenceCategory
+        android:title="Device Identity"
+        android:dependency="mock_device_enabled">
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_manufacturer"
+            android:title="@string/mock_device_manufacturer"
+            android:summary="@string/mock_device_manufacturer_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_model"
+            android:title="@string/mock_device_model"
+            android:summary="@string/mock_device_model_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_id"
+            android:title="@string/mock_device_id"
+            android:summary="@string/mock_device_id_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_serial"
+            android:title="@string/mock_device_serial"
+            android:summary="@string/mock_device_serial_summary" />
+    </androidx.preference.PreferenceCategory>
     
-    <androidx.preference.EditTextPreference
-        android:key="mock_device_model"
-        android:title="@string/mock_device_model"
-        android:summary="@string/mock_device_model_summary"
-        android:dependency="mock_device_enabled" />
+    <androidx.preference.PreferenceCategory
+        android:title="Software Version"
+        android:dependency="mock_device_enabled">
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_bootloader"
+            android:title="@string/mock_device_bootloader"
+            android:summary="@string/mock_device_bootloader_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_pda_version"
+            android:title="@string/mock_device_pda_version"
+            android:summary="@string/mock_device_pda_version_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_csc_version"
+            android:title="@string/mock_device_csc_version"
+            android:summary="@string/mock_device_csc_version_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_phone_version"
+            android:title="@string/mock_device_phone_version"
+            android:summary="@string/mock_device_phone_version_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_security_patch"
+            android:title="@string/mock_device_security_patch"
+            android:summary="@string/mock_device_security_patch_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_build_type"
+            android:title="@string/mock_device_build_type"
+            android:summary="@string/mock_device_build_type_summary" />
+    </androidx.preference.PreferenceCategory>
     
-    <androidx.preference.EditTextPreference
-        android:key="mock_device_id"
-        android:title="@string/mock_device_id"
-        android:summary="@string/mock_device_id_summary"
-        android:dependency="mock_device_enabled" />
-    
-    <androidx.preference.EditTextPreference
-        android:key="mock_device_imsi"
-        android:title="@string/mock_device_imsi"
-        android:summary="@string/mock_device_imsi_summary"
-        android:dependency="mock_device_enabled" />
-    
-    <androidx.preference.EditTextPreference
-        android:key="mock_device_language"
-        android:title="@string/mock_device_language"
-        android:summary="@string/mock_device_language_summary"
-        android:dependency="mock_device_enabled" />
+    <androidx.preference.PreferenceCategory
+        android:title="Network Information"
+        android:dependency="mock_device_enabled">
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_imsi"
+            android:title="@string/mock_device_imsi"
+            android:summary="@string/mock_device_imsi_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_mcc"
+            android:title="@string/mock_device_mcc"
+            android:summary="@string/mock_device_mcc_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_mnc"
+            android:title="@string/mock_device_mnc"
+            android:summary="@string/mock_device_mnc_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_sim_operator"
+            android:title="@string/mock_device_sim_operator"
+            android:summary="@string/mock_device_sim_operator_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_language"
+            android:title="@string/mock_device_language"
+            android:summary="@string/mock_device_language_summary" />
+    </androidx.preference.PreferenceCategory>
 </androidx.preference.PreferenceScreen>
