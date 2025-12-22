@@ -79,6 +79,24 @@
 .method public idmGetDeviceID(Landroid/content/Context;)Ljava/lang/String;
     .locals 0
 
+    # Check if mock device is enabled
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_real
+
+    # Return mock device ID if enabled
+    invoke-static {p1}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getDeviceId(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object p0
+
+    if-eqz p0, :cond_real
+
+    return-object p0
+
+    :cond_real
+    # Original code for real device ID
     new-instance p0, Lcom/idm/fotaagent/database/room/data/repository/RegisteredDeviceRepository;
 
     invoke-direct {p0, p1}, Lcom/idm/fotaagent/database/room/data/repository/RegisteredDeviceRepository;-><init>(Landroid/content/Context;)V

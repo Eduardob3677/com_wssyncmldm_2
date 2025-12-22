@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.preference.SwitchPreferenceCompat
+        android:key="mock_device_enabled"
+        android:title="@string/mock_device_enabled"
+        android:summary="@string/mock_device_enabled_summary"
+        android:defaultValue="false" />
+    
+    <androidx.preference.EditTextPreference
+        android:key="mock_device_manufacturer"
+        android:title="@string/mock_device_manufacturer"
+        android:summary="@string/mock_device_manufacturer_summary"
+        android:dependency="mock_device_enabled" />
+    
+    <androidx.preference.EditTextPreference
+        android:key="mock_device_model"
+        android:title="@string/mock_device_model"
+        android:summary="@string/mock_device_model_summary"
+        android:dependency="mock_device_enabled" />
+    
+    <androidx.preference.EditTextPreference
+        android:key="mock_device_id"
+        android:title="@string/mock_device_id"
+        android:summary="@string/mock_device_id_summary"
+        android:dependency="mock_device_enabled" />
+    
+    <androidx.preference.EditTextPreference
+        android:key="mock_device_imsi"
+        android:title="@string/mock_device_imsi"
+        android:summary="@string/mock_device_imsi_summary"
+        android:dependency="mock_device_enabled" />
+    
+    <androidx.preference.EditTextPreference
+        android:key="mock_device_language"
+        android:title="@string/mock_device_language"
+        android:summary="@string/mock_device_language_summary"
+        android:dependency="mock_device_enabled" />
+</androidx.preference.PreferenceScreen>

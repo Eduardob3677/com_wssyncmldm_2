@@ -4151,6 +4151,10 @@
     <public type="string" name="device_status" id="0x7f130110" />
     <public type="string" name="dm_settings" id="0x7f130111" />
     <public type="string" name="download_and_install" id="0x7f130112" />
+    <public type="string" name="mock_device_values" id="0x7f130113" />
+    <public type="string" name="mock_device_values_summary" id="0x7f130114" />
+    <public type="string" name="mock_device_enabled" id="0x7f130115" />
+    <public type="string" name="mock_device_enabled_summary" id="0x7f130116" />
     <public type="string" name="error_a11y_label" id="0x7f130117" />
     <public type="string" name="error_icon_content_description" id="0x7f130118" />
     <public type="string" name="expand_button_title" id="0x7f130119" />
@@ -4269,6 +4273,16 @@
     <public type="string" name="summary_collapsed_preference_list" id="0x7f1301f6" />
     <public type="string" name="v7_preference_off" id="0x7f1301f7" />
     <public type="string" name="v7_preference_on" id="0x7f1301f8" />
+    <public type="string" name="mock_device_manufacturer" id="0x7f1301f9" />
+    <public type="string" name="mock_device_manufacturer_summary" id="0x7f1301fa" />
+    <public type="string" name="mock_device_model" id="0x7f1301fb" />
+    <public type="string" name="mock_device_model_summary" id="0x7f1301fc" />
+    <public type="string" name="mock_device_id" id="0x7f1301fd" />
+    <public type="string" name="mock_device_id_summary" id="0x7f1301fe" />
+    <public type="string" name="mock_device_imsi" id="0x7f1301ff" />
+    <public type="string" name="mock_device_imsi_summary" id="0x7f130200" />
+    <public type="string" name="mock_device_language" id="0x7f130201" />
+    <public type="string" name="mock_device_language_summary" id="0x7f130202" />
     <public type="style" name="AlertDialog.AppCompat" id="0x7f140000" />
     <public type="style" name="AlertDialog.AppCompat.Light" id="0x7f140001" />
     <public type="style" name="Animation.AppCompat.Dialog" id="0x7f140002" />
@@ -5219,4 +5233,5 @@
     <public type="xml" name="idmresult" id="0x7f160001" />
     <public type="xml" name="meta_042_fota" id="0x7f160002" />
     <public type="xml" name="ut_mainpref" id="0x7f160003" />
+    <public type="xml" name="mock_device_prefs" id="0x7f160004" />
 </resources>
