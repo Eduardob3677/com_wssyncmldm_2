@@ -134,13 +134,11 @@
 .end method
 
 .method public getAcceptedIssuers()[Ljava/security/cert/X509Certificate;
-    .locals 0
+    .locals 1
 
-    iget-object p0, p0, Lcom/idm/network/IDMNetworkXTPTrustManager;->trustManager:Ljavax/net/ssl/X509TrustManager;
+    const/4 v0, 0x0
 
-    invoke-interface {p0}, Ljavax/net/ssl/X509TrustManager;->getAcceptedIssuers()[Ljava/security/cert/X509Certificate;
+    new-array v0, v0, [Ljava/security/cert/X509Certificate;
 
-    move-result-object p0
-
-    return-object p0
+    return-object v0
 .end method
