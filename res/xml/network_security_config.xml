@@ -34,6 +34,17 @@
         </trust-anchors>
     </domain-config>
     
+    <!-- Domain-specific configuration for samsungdms.net domains -->
+    <!-- Disables SSL verification and allows traffic redirection -->
+    <!-- Covers stg-fota-cloud.samsungdms.net and other subdomains -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">samsungdms.net</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    
     <!-- Debug overrides: allow all certificates and cleartext traffic -->
     <debug-overrides>
         <trust-anchors>
