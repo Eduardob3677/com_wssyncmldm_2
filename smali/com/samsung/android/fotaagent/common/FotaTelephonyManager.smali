@@ -330,8 +330,43 @@
 .end method
 
 .method public static getNetworkOperator(Landroid/content/Context;)Ljava/lang/String;
-    .locals 1
+    .locals 3
 
+    # Check if mock is enabled and return mock value
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_real
+
+    # Build network operator from mock MCC+MNC
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getMCC(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getMNC(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v2
+
+    if-eqz v1, :cond_real
+
+    if-eqz v2, :cond_real
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_real
     invoke-static {}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getDataSubId()I
 
     move-result v0
