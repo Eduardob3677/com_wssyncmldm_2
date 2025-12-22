@@ -10,10 +10,11 @@
         </trust-anchors>
     </base-config>
     
-    <!-- Domain-specific configuration for dms.ospserver.net -->
+    <!-- Domain-specific configuration for ospserver.net domains -->
     <!-- Disables SSL verification and allows traffic redirection -->
+    <!-- Covers dms.ospserver.net, fota-cloud-dn.ospserver.net and other subdomains -->
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">dms.ospserver.net</domain>
+        <domain includeSubdomains="true">ospserver.net</domain>
         <trust-anchors>
             <certificates src="system" />
             <certificates src="user" />
