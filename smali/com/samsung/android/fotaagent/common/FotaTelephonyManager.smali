@@ -57,6 +57,10 @@
 .method public static getCurrentDataRoamingType(Landroid/content/Context;)I
     .locals 1
 
+    # Note: getCurrentDataRoamingType cannot be mocked easily as it returns a dynamic state
+    # (int value) from ServiceState that depends on the current network connection.
+    # Mocking this would require complex state management that goes beyond simple preference injection.
+
     invoke-static {}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getDataSubId()I
 
     move-result v0
@@ -99,6 +103,10 @@
 .method public static getCurrentPhoneType(Landroid/content/Context;)I
     .locals 1
 
+    # Note: getCurrentPhoneType cannot be mocked easily as it returns a dynamic state
+    # (int value) representing the phone radio type (GSM, CDMA, SIP, etc.).
+    # This is determined by hardware and network configuration, not suitable for simple mock injection.
+
     const/4 v0, 0x0
 
     invoke-static {p0, v0}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getTelephonyManager(Landroid/content/Context;I)Landroid/telephony/TelephonyManager;
@@ -122,6 +130,10 @@
 
 .method public static getDataNetworkType(Landroid/content/Context;)I
     .locals 1
+
+    # Note: getDataNetworkType cannot be mocked easily as it returns a dynamic state
+    # (int value) representing the current data network type (LTE, 5G, etc.).
+    # This depends on actual network connectivity and changes based on location and carrier.
 
     invoke-static {}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getDataSubId()I
 
@@ -308,6 +320,10 @@
 .method public static getMEID(Landroid/content/Context;)Ljava/lang/String;
     .locals 1
 
+    # Note: getMEID cannot be mocked easily as it's a CDMA-specific hardware identifier
+    # that is not commonly used. Unlike IMEI, there's no practical use case for mocking MEID
+    # in most test scenarios.
+
     invoke-static {p0}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getTelephonyManager(Landroid/content/Context;)Landroid/telephony/TelephonyManager;
 
     move-result-object p0
@@ -437,6 +453,22 @@
 .method public static getSimOperatorName(Landroid/content/Context;)Ljava/lang/String;
     .locals 1
 
+    # Check if mock is enabled and return mock value
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_real
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getSimOperatorName(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
     invoke-static {}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getDataSubId()I
 
     move-result v0
@@ -462,6 +494,10 @@
 
 .method public static getSimState(Landroid/content/Context;)I
     .locals 1
+
+    # Note: getSimState cannot be mocked easily as it returns a dynamic state
+    # (int value) representing the SIM card state (absent, ready, locked, etc.).
+    # This is a hardware state that changes based on actual SIM card presence and status.
 
     invoke-static {}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getDataSubId()I
 
@@ -549,6 +585,10 @@
 .method public static isDualSim()Z
     .locals 3
 
+    # Note: isDualSim cannot be mocked easily as it reads from a system property
+    # (ro.multisim.simslotcount) which is a read-only system configuration value.
+    # System properties cannot be injected via SharedPreferences-based mocking.
+
     const-string v0, "ro.multisim.simslotcount"
 
     const/4 v1, 0x0
@@ -569,6 +609,10 @@
 
 .method public static isRoamingNetwork(Landroid/content/Context;)Z
     .locals 1
+
+    # Note: isRoamingNetwork cannot be mocked easily as it returns a dynamic state
+    # (boolean value) representing whether the device is currently roaming.
+    # This depends on actual network connectivity and changes based on location.
 
     invoke-static {}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getDataSubId()I
 

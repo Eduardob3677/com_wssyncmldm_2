@@ -38,6 +38,8 @@
 
 .field private static final KEY_SIM_OPERATOR:Ljava/lang/String; = "mock_device_sim_operator"
 
+.field private static final KEY_SIM_OPERATOR_NAME:Ljava/lang/String; = "mock_device_sim_operator_name"
+
 .field private static final KEY_KNOX_STATUS:Ljava/lang/String; = "mock_device_knox_status"
 
 .field private static final KEY_KNOX_VERSION:Ljava/lang/String; = "mock_device_knox_version"
@@ -354,6 +356,24 @@
     move-result-object p0
 
     const-string v0, "mock_device_sim_operator"
+
+    const/4 v1, 0x0
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getSimOperatorName(Landroid/content/Context;)Ljava/lang/String;
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_sim_operator_name"
 
     const/4 v1, 0x0
 
