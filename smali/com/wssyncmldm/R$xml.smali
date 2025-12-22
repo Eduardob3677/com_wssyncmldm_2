@@ -21,6 +21,8 @@
 
 .field public static final meta_042_fota:I = 0x7f160002
 
+.field public static final mock_device_prefs:I = 0x7f160004
+
 .field public static final ut_mainpref:I = 0x7f160003
 
 
