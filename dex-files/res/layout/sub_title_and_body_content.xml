@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<view android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" class="com.samsung.android.fotaagent.common.view.RoundedCorner$LinearLayout"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.samsung.android.fotaagent.common.view.TextViewWithLimitedFontSize android:id="@id/tv_content_title" style="@style/Widget.TextView.Sub.Title" />
-    <com.samsung.android.fotaagent.common.view.TextViewWithLimitedFontSize android:id="@id/tv_content_body" style="@style/Widget.TextView.Sub.Body.Last" />
-</view>
