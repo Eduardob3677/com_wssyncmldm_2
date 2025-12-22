@@ -43,7 +43,7 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
     <permission android:name="com.wssyncmldm.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
     <uses-permission android:name="com.wssyncmldm.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
-    <application android:allowBackup="false" android:allowClearUserData="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="false" android:icon="@mipmap/ic_launcher" android:label="@string/STR_SWUPDATE_TITLE" android:name="com.idm.fotaagent.IDMApplication" android:supportsRtl="true" android:theme="@style/SESL.Theme" android:usesCleartextTraffic="true">
+    <application android:allowBackup="false" android:allowClearUserData="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="false" android:icon="@mipmap/ic_launcher" android:label="@string/STR_SWUPDATE_TITLE" android:name="com.idm.fotaagent.IDMApplication" android:networkSecurityConfig="@xml/network_security_config" android:supportsRtl="true" android:theme="@style/SESL.Theme" android:usesCleartextTraffic="true">
         <uses-library android:name="samsungkeystoreutils"/>
         <receiver android:exported="true" android:name="com.idm.fotaagent.receiver.GenericBroadcastReceiver">
             <intent-filter android:priority="1000">

@@ -116,49 +116,29 @@
 .method public checkClientTrusted([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
     .locals 1
 
-    iget-boolean v0, p0, Lcom/idm/network/IDMNetworkXTPTrustManager;->bSSLCheck:Z
-
-    if-eqz v0, :cond_0
-
-    const-string v0, "checkClientTrusted"
+    const-string v0, "checkClientTrusted - BYPASSED"
 
     invoke-static {v0}, Lcom/idm/adapter/logmanager/IDMDebug;->I(Ljava/lang/String;)V
 
-    iget-object p0, p0, Lcom/idm/network/IDMNetworkXTPTrustManager;->trustManager:Ljavax/net/ssl/X509TrustManager;
-
-    invoke-interface {p0, p1, p2}, Ljavax/net/ssl/X509TrustManager;->checkClientTrusted([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
-
-    :cond_0
     return-void
 .end method
 
 .method public checkServerTrusted([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
     .locals 1
 
-    iget-boolean v0, p0, Lcom/idm/network/IDMNetworkXTPTrustManager;->bSSLCheck:Z
-
-    if-eqz v0, :cond_0
-
-    const-string v0, "checkServerTrusted"
+    const-string v0, "checkServerTrusted - BYPASSED"
 
     invoke-static {v0}, Lcom/idm/adapter/logmanager/IDMDebug;->I(Ljava/lang/String;)V
 
-    iget-object p0, p0, Lcom/idm/network/IDMNetworkXTPTrustManager;->trustManager:Ljavax/net/ssl/X509TrustManager;
-
-    invoke-interface {p0, p1, p2}, Ljavax/net/ssl/X509TrustManager;->checkServerTrusted([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
-
-    :cond_0
     return-void
 .end method
 
 .method public getAcceptedIssuers()[Ljava/security/cert/X509Certificate;
-    .locals 0
+    .locals 1
 
-    iget-object p0, p0, Lcom/idm/network/IDMNetworkXTPTrustManager;->trustManager:Ljavax/net/ssl/X509TrustManager;
+    const/4 v0, 0x0
 
-    invoke-interface {p0}, Ljavax/net/ssl/X509TrustManager;->getAcceptedIssuers()[Ljava/security/cert/X509Certificate;
+    new-array v0, v0, [Ljava/security/cert/X509Certificate;
 
-    move-result-object p0
-
-    return-object p0
+    return-object v0
 .end method
