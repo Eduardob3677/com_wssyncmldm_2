@@ -1484,6 +1484,7 @@
     <attr name="preferenceScreenStyle" format="reference" />
     <attr name="preferenceStyle" format="reference" />
     <attr name="preferenceTheme" format="reference" />
+    <attr name="sharedPreferencesName" format="string" />
     <attr name="prefixText" format="string" />
     <attr name="prefixTextAppearance" format="reference" />
     <attr name="prefixTextColor" format="color" />
