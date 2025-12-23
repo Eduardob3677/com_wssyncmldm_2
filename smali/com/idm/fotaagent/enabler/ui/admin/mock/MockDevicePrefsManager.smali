@@ -210,7 +210,7 @@
     return-object p0
 .end method
 
-.method public static getOneUiVersion(Landroid/content/Context;)I
+.method public static getOneUiVersion(Landroid/content/Context;)Ljava/lang/String;
     .locals 2
 
     invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
@@ -221,11 +221,11 @@
 
     const/4 v1, 0x0
 
-    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    move-result p0
+    move-result-object p0
 
-    return p0
+    return-object p0
 .end method
 
 .method public static getBootloader(Landroid/content/Context;)Ljava/lang/String;

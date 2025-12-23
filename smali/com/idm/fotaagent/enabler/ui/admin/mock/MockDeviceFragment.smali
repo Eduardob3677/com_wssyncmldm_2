@@ -219,6 +219,22 @@
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
+    # Set Android version
+    sget-object v3, Landroid/os/Build$VERSION;->RELEASE:Ljava/lang/String;
+
+    const-string p0, "mock_device_android_version"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    # Set OneUI version
+    invoke-static {}, Lcom/idm/fotaagent/enabler/ui/common/subcontent/SoftwareUpdateInformation$Latest;->getOneUiVersion()Ljava/lang/String;
+
+    move-result-object v3
+
+    const-string p0, "mock_device_oneui_version"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
     # Set MCC from FotaTelephonyManager
     invoke-static {v0}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->readSimMCC(Landroid/content/Context;)Ljava/lang/String;
 
