@@ -33,7 +33,7 @@
 .end method
 
 .method private initializeDefaultValues()V
-    .locals 4
+    .locals 5
 
     invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;
 
