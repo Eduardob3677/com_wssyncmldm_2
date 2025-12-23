@@ -409,7 +409,7 @@
 
     move-result-object v0
 
-    # Sync EditTextPreference values with SharedPreferences using setSummary
+    # Sync EditTextPreference values with SharedPreferences using z method
     # PDA Version
     const-string v1, "mock_device_pda_version"
 
@@ -429,7 +429,7 @@
 
     if-eqz v1, :skip_pda
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_pda
 
@@ -452,7 +452,7 @@
 
     if-eqz v1, :skip_manufacturer
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_manufacturer
 
@@ -475,7 +475,7 @@
 
     if-eqz v1, :skip_model
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_model
 
@@ -498,7 +498,7 @@
 
     if-eqz v1, :skip_software_version
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_software_version
 
@@ -521,7 +521,7 @@
 
     if-eqz v1, :skip_device_id
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_device_id
 
@@ -544,7 +544,7 @@
 
     if-eqz v1, :skip_serial
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_serial
 
@@ -567,7 +567,7 @@
 
     if-eqz v1, :skip_bootloader
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_bootloader
 
@@ -590,7 +590,7 @@
 
     if-eqz v1, :skip_csc
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_csc
 
@@ -613,7 +613,7 @@
 
     if-eqz v1, :skip_phone
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_phone
 
@@ -636,7 +636,7 @@
 
     if-eqz v1, :skip_security
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_security
 
@@ -659,7 +659,7 @@
 
     if-eqz v1, :skip_build_type
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_build_type
 
@@ -682,7 +682,7 @@
 
     if-eqz v1, :skip_imsi
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_imsi
 
@@ -705,7 +705,7 @@
 
     if-eqz v1, :skip_mcc
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_mcc
 
@@ -728,7 +728,7 @@
 
     if-eqz v1, :skip_mnc
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_mnc
 
@@ -751,7 +751,7 @@
 
     if-eqz v1, :skip_sim_operator
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_sim_operator
 
@@ -774,7 +774,7 @@
 
     if-eqz v1, :skip_language
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_language
 
@@ -797,7 +797,7 @@
 
     if-eqz v1, :skip_knox_version
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_knox_version
 
@@ -820,7 +820,7 @@
 
     if-eqz v1, :skip_warranty
 
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->z(Ljava/lang/CharSequence;)V
 
     :skip_warranty
 
