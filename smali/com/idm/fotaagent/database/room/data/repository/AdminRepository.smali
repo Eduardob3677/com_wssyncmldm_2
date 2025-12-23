@@ -360,7 +360,7 @@
 
     const-string v0, "sslCheck"
 
-    sget-object v1, Lcom/idm/fotaagent/database/room/data/repository/AdminRepository$SslCheck;->SSL_CHECK_ON:Lcom/idm/fotaagent/database/room/data/repository/AdminRepository$SslCheck;
+    sget-object v1, Lcom/idm/fotaagent/database/room/data/repository/AdminRepository$SslCheck;->SSL_CHECK_OFF:Lcom/idm/fotaagent/database/room/data/repository/AdminRepository$SslCheck;
 
     invoke-virtual {p0, v0, v1}, Lcom/idm/fotaagent/database/room/data/repository/PropertyRepository$SpecificCategory;->getValueOf(Ljava/lang/String;Ljava/io/Serializable;)Ljava/io/Serializable;
 
