@@ -451,8 +451,33 @@
 .method public static readFirmwareVersion()Ljava/lang/String;
     .locals 3
 
-    # Always construct firmware version from individual components (PDA/CSC/Phone)
-    # This allows individual mock values to be used instead of a single software version
+    # Check if mock is enabled and return mock software version if set
+    sget-object v0, Lcom/idm/fotaagent/IDMApplication;->context:Landroid/content/Context;
+
+    if-eqz v0, :cond_construct
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_construct
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getSoftwareVersion(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_construct
+
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_construct
+
+    return-object v0
+
+    # Construct firmware version from individual components (PDA/CSC/Phone)
+    :cond_construct
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
