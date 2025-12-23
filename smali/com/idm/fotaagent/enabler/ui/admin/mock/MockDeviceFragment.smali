@@ -629,11 +629,20 @@
 .end method
 
 .method public onCreatePreferences(Landroid/os/Bundle;Ljava/lang/String;)V
-    .locals 0
+    .locals 2
 
     const-string p1, "MockDeviceFragment.onCreatePreferences"
 
     invoke-static {p1}, Lcom/samsung/android/fotaagent/common/log/Log;->I(Ljava/lang/Object;)V
+
+    # Set the SharedPreferences name before inflating preferences
+    invoke-virtual {p0}, Landroidx/preference/z;->getPreferenceManager()Landroidx/preference/j;
+
+    move-result-object p1
+
+    const-string v0, "mock_device_prefs"
+
+    invoke-virtual {p1, v0}, Landroidx/preference/j;->setSharedPreferencesName(Ljava/lang/String;)V
 
     const p1, 0x7f160004
 
