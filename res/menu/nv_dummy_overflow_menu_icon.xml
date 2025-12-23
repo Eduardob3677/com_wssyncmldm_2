@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Dummy overflow menu icon placeholder -->
+    <!-- 
+        Dummy overflow menu icon placeholder.
+        This resource is referenced in R$menu.smali (ID: 0x7f0f0000) but is not actively used in the code.
+        It exists to prevent Resources$NotFoundException if referenced at runtime.
+    -->
 </menu>
