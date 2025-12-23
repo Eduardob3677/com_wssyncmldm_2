@@ -93,13 +93,6 @@
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    # Set OneUI version (default 0 = unknown)
-    const-string p0, "mock_device_oneui_version"
-
-    const/4 v3, 0x0
-
-    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
-
     # Set bootloader
     sget-object v3, Landroid/os/Build;->BOOTLOADER:Ljava/lang/String;
 
@@ -383,11 +376,38 @@
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
 
-    # Set bootloader locked status (default true)
+    # Set bootloader locked status from actual device
     const-string p0, "mock_device_bootloader_locked"
+
+    # Read actual bootloader locked status from system property
+    const-string v3, "ro.boot.flash.locked"
+
+    const/4 v4, -0x1
+
+    invoke-static {v3, v4}, Landroid/os/SemSystemProperties;->getInt(Ljava/lang/String;I)I
+
+    move-result v3
+
+    # Convert to boolean: 1 = locked (true), 0 = unlocked (false), -1 = unknown (default true)
+    const/4 v4, 0x1
+
+    if-ne v3, v4, :check_unlocked
 
     const/4 v3, 0x1
 
+    goto :set_bootloader_locked
+
+    :check_unlocked
+    if-nez v3, :default_locked
+
+    const/4 v3, 0x0
+
+    goto :set_bootloader_locked
+
+    :default_locked
+    const/4 v3, 0x1
+
+    :set_bootloader_locked
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
 
     # Mark as initialized
