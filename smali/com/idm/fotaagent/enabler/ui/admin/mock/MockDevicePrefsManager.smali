@@ -73,6 +73,14 @@
 .method private static getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
     .locals 2
 
+    # Null check for context
+    if-nez p0, :cond_getprefs_valid
+
+    const/4 p0, 0x0
+
+    return-object p0
+
+    :cond_getprefs_valid
     const-string v0, "mock_device_prefs"
 
     const/4 v1, 0x0
@@ -91,6 +99,14 @@
 
     move-result-object p0
 
+    # Null check for SharedPreferences
+    if-nez p0, :cond_prefs_valid
+
+    const/4 v0, 0x0
+
+    return v0
+
+    :cond_prefs_valid
     const-string v0, "mock_device_enabled"
 
     const/4 v1, 0x0
