@@ -380,7 +380,426 @@
 
     invoke-virtual {p0, v0, v1}, Landroidx/preference/z;->setPreferencesFromResource(ILjava/lang/String;)V
 
+    # Sync the values with the preference UI elements
+    invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->syncPreferencesWithValues()V
+
     :cond_1
+
+    return-void
+.end method
+
+.method private syncPreferencesWithValues()V
+    .locals 4
+
+    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    # Get SharedPreferences
+    const-string v1, "mock_device_prefs"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v0
+
+    # Sync EditTextPreference values with SharedPreferences
+    # PDA Version
+    const-string v1, "mock_device_pda_version"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_pda
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_pda
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_pda
+
+    # Manufacturer
+    const-string v1, "mock_device_manufacturer"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_manufacturer
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_manufacturer
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_manufacturer
+
+    # Model
+    const-string v1, "mock_device_model"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_model
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_model
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_model
+
+    # Device ID
+    const-string v1, "mock_device_id"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_device_id
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_device_id
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_device_id
+
+    # Serial
+    const-string v1, "mock_device_serial"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_serial
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_serial
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_serial
+
+    # Bootloader
+    const-string v1, "mock_device_bootloader"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_bootloader
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_bootloader
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_bootloader
+
+    # CSC Version
+    const-string v1, "mock_device_csc_version"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_csc
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_csc
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_csc
+
+    # Phone Version
+    const-string v1, "mock_device_phone_version"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_phone
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_phone
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_phone
+
+    # Security Patch
+    const-string v1, "mock_device_security_patch"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_security
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_security
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_security
+
+    # Build Type
+    const-string v1, "mock_device_build_type"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_build_type
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_build_type
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_build_type
+
+    # IMSI
+    const-string v1, "mock_device_imsi"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_imsi
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_imsi
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_imsi
+
+    # MCC
+    const-string v1, "mock_device_mcc"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_mcc
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_mcc
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_mcc
+
+    # MNC
+    const-string v1, "mock_device_mnc"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_mnc
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_mnc
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_mnc
+
+    # SIM Operator
+    const-string v1, "mock_device_sim_operator"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_sim_operator
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_sim_operator
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_sim_operator
+
+    # Language
+    const-string v1, "mock_device_language"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_language
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_language
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_language
+
+    # Knox Version
+    const-string v1, "mock_device_knox_version"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_knox_version
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_knox_version
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_knox_version
+
+    # Warranty Bit
+    const-string v1, "mock_device_warranty_bit"
+
+    invoke-virtual {p0, v1}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :skip_warranty
+
+    const/4 v3, 0x0
+
+    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz v1, :skip_warranty
+
+    invoke-virtual {v2, v1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V
+
+    :skip_warranty
 
     return-void
 .end method
@@ -413,6 +832,9 @@
     const p1, 0x7f160004
 
     invoke-virtual {p0, p1, p2}, Landroidx/preference/z;->setPreferencesFromResource(ILjava/lang/String;)V
+
+    # Sync SharedPreferences values with Preference objects to show default values
+    invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->syncPreferencesWithValues()V
 
     return-void
 .end method
