@@ -67,8 +67,28 @@
 .end method
 
 .method private static getBuildType()Ljava/lang/String;
-    .locals 2
+    .locals 3
 
+    # Check if mock is enabled and return mock value
+    sget-object v0, Lcom/idm/fotaagent/IDMApplication;->context:Landroid/content/Context;
+
+    if-eqz v0, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getBuildType(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
     const-string v0, "ro.system.build.type"
 
     const-string v1, ""
