@@ -35,11 +35,20 @@
 .method private initializeDefaultValues()V
     .locals 5
 
+    # Log method entry
+    const-string v0, "MockDeviceFragment.initializeDefaultValues"
+
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/log/Log;->I(Ljava/lang/Object;)V
+
     invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;
 
     move-result-object v0
 
     if-nez v0, :cond_0
+
+    const-string v0, "Context is null, cannot initialize defaults"
+
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/log/Log;->E(Ljava/lang/Object;)V
 
     return-void
 
@@ -418,17 +427,27 @@
     # Apply changes
     invoke-interface {v1}, Landroid/content/SharedPreferences$Editor;->apply()V
 
+    # Log success
+    const-string v0, "Default values initialized successfully"
+
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/log/Log;->I(Ljava/lang/Object;)V
+
     return-void
 .end method
 
 .method private resetToDefaults()V
     .locals 4
 
+    # Get context with null check
     invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;
 
     move-result-object v0
 
     if-nez v0, :cond_0
+
+    const-string v0, "MockDeviceFragment.resetToDefaults: Context is null"
+
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/log/Log;->E(Ljava/lang/Object;)V
 
     return-void
 
@@ -472,18 +491,81 @@
     # Sync preference summaries after reload
     invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->syncPreferenceSummaries()V
 
-    :cond_1
+    goto :cond_end
 
+    :cond_1
+    const-string v0, "MockDeviceFragment.resetToDefaults: PreferenceScreen is null"
+
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/log/Log;->W(Ljava/lang/Object;)V
+
+    :cond_end
     return-void
 .end method
 
 .method private syncPreferenceSummaries()V
-    .locals 0
+    .locals 5
 
-    # Disabled due to NoSuchMethodError: setSummary method doesn't exist in obfuscated androidx.preference.Preference
-    # This method tried to update preference summaries to display current values
-    # but the setSummary method has been removed/obfuscated in this APK
+    # Get context to access SharedPreferences
+    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;
 
+    move-result-object v0
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    # Get SharedPreferences
+    const-string v1, "mock_device_prefs"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v1
+
+    # Update PDA version preference summary
+    const-string v2, "mock_device_pda_version"
+
+    const/4 v3, 0x0
+
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {p0, v2}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :cond_1
+
+    if-eqz v4, :cond_1
+
+    invoke-virtual {v2, v4}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+
+    :cond_1
+    # Update software version preference summary
+    const-string v2, "mock_device_software_version"
+
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p0, v2}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroidx/preference/EditTextPreference;
+
+    if-eqz v2, :cond_2
+
+    if-eqz v1, :cond_2
+
+    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+
+    :cond_2
     return-void
 .end method
 
@@ -492,7 +574,12 @@
 .method public onSharedPreferenceChanged(Landroid/content/SharedPreferences;Ljava/lang/String;)V
     .locals 3
 
+    # Validate parameters
     if-nez p2, :cond_0
+
+    const-string v0, "onSharedPreferenceChanged: key is null"
+
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/log/Log;->W(Ljava/lang/Object;)V
 
     return-void
 
@@ -665,6 +752,16 @@
 .method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
     .locals 4
 
+    # Null check for MenuItem
+    if-nez p1, :cond_menu_valid
+
+    invoke-super {p0, p1}, Landroidx/fragment/app/Fragment;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
+
+    move-result v0
+
+    return v0
+
+    :cond_menu_valid
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
