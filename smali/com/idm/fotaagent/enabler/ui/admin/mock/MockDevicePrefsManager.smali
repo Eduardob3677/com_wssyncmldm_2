@@ -18,6 +18,10 @@
 
 .field private static final KEY_LANGUAGE:Ljava/lang/String; = "mock_device_language"
 
+.field private static final KEY_ANDROID_VERSION:Ljava/lang/String; = "mock_device_android_version"
+
+.field private static final KEY_ONEUI_VERSION:Ljava/lang/String; = "mock_device_oneui_version"
+
 .field private static final KEY_BOOTLOADER:Ljava/lang/String; = "mock_device_bootloader"
 
 .field private static final KEY_PDA_VERSION:Ljava/lang/String; = "mock_device_pda_version"
@@ -178,6 +182,42 @@
     move-result-object p0
 
     const-string v0, "mock_device_language"
+
+    const/4 v1, 0x0
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getAndroidVersion(Landroid/content/Context;)Ljava/lang/String;
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_android_version"
+
+    const/4 v1, 0x0
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getOneUiVersion(Landroid/content/Context;)Ljava/lang/String;
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_oneui_version"
 
     const/4 v1, 0x0
 

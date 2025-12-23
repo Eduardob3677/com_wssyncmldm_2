@@ -39,6 +39,16 @@
         android:dependency="mock_device_enabled">
         
         <androidx.preference.EditTextPreference
+            android:key="mock_device_android_version"
+            android:title="@string/mock_device_android_version"
+            android:summary="@string/mock_device_android_version_summary" />
+        
+        <androidx.preference.EditTextPreference
+            android:key="mock_device_oneui_version"
+            android:title="@string/mock_device_oneui_version"
+            android:summary="@string/mock_device_oneui_version_summary" />
+        
+        <androidx.preference.EditTextPreference
             android:key="mock_device_bootloader"
             android:title="@string/mock_device_bootloader"
             android:summary="@string/mock_device_bootloader_summary" />
