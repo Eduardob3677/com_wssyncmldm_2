@@ -4,6 +4,14 @@
 
 
 # direct methods
+.method static synthetic access$000(Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->resetToDefaults()V
+
+    return-void
+.end method
+
 .method public constructor <init>()V
     .locals 0
 
@@ -324,15 +332,73 @@
     return-void
 .end method
 
+.method private resetToDefaults()V
+    .locals 4
+
+    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    # Get SharedPreferences
+    const-string v1, "mock_device_prefs"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v1
+
+    # Clear all preferences including _initialized flag
+    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Landroid/content/SharedPreferences$Editor;->clear()Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {v1}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    # Re-initialize with current device values
+    invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->initializeDefaultValues()V
+
+    # Reload preferences to show updated values
+    invoke-virtual {p0}, Landroidx/preference/z;->getPreferenceScreen()Landroidx/preference/PreferenceScreen;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_1
+
+    invoke-virtual {v0}, Landroidx/preference/PreferenceGroup;->removeAll()V
+
+    const v0, 0x7f160004
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroidx/preference/z;->setPreferencesFromResource(ILjava/lang/String;)V
+
+    :cond_1
+
+    return-void
+.end method
+
 
 # virtual methods
 .method public onCreate(Landroid/os/Bundle;)V
-    .locals 0
+    .locals 1
 
     invoke-super {p0, p1}, Landroidx/preference/z;->onCreate(Landroid/os/Bundle;)V
 
     # Initialize with real device values on first launch
     invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->initializeDefaultValues()V
+
+    # Enable options menu
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, v0}, Landroidx/fragment/app/Fragment;->setHasOptionsMenu(Z)V
 
     return-void
 .end method
@@ -349,4 +415,77 @@
     invoke-virtual {p0, p1, p2}, Landroidx/preference/z;->setPreferencesFromResource(ILjava/lang/String;)V
 
     return-void
+.end method
+
+.method public onCreateOptionsMenu(Landroid/view/Menu;Landroid/view/MenuInflater;)V
+    .locals 1
+
+    invoke-super {p0, p1, p2}, Landroidx/fragment/app/Fragment;->onCreateOptionsMenu(Landroid/view/Menu;Landroid/view/MenuInflater;)V
+
+    const v0, 0x7f0f0001
+
+    invoke-virtual {p2, v0, p1}, Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V
+
+    return-void
+.end method
+
+.method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
+    .locals 4
+
+    invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
+
+    move-result v0
+
+    const v1, 0x7f0a02c8
+
+    const/4 v2, 0x1
+
+    if-ne v0, v1, :cond_0
+
+    # Show confirmation dialog
+    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_1
+
+    new-instance v1, Landroidx/appcompat/app/b$a;
+
+    invoke-direct {v1, v0}, Landroidx/appcompat/app/b$a;-><init>(Landroid/content/Context;)V
+
+    const v0, 0x7f130001
+
+    invoke-virtual {v1, v0}, Landroidx/appcompat/app/b$a;->setTitle(I)Landroidx/appcompat/app/b$a;
+
+    const v0, 0x7f130002
+
+    invoke-virtual {v1, v0}, Landroidx/appcompat/app/b$a;->setMessage(I)Landroidx/appcompat/app/b$a;
+
+    new-instance v0, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment$1;
+
+    invoke-direct {v0, p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment$1;-><init>(Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;)V
+
+    const v3, 0x104000a
+
+    invoke-virtual {v1, v3, v0}, Landroidx/appcompat/app/b$a;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/b$a;
+
+    const/high16 v0, 0x1040000
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v1, v0, v3}, Landroidx/appcompat/app/b$a;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/b$a;
+
+    invoke-virtual {v1}, Landroidx/appcompat/app/b$a;->show()Landroidx/appcompat/app/b;
+
+    goto :cond_1
+
+    :cond_0
+
+    invoke-super {p0, p1}, Landroidx/fragment/app/Fragment;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
+
+    move-result v2
+
+    :cond_1
+
+    return v2
 .end method
