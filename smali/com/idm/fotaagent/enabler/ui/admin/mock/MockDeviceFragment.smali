@@ -253,7 +253,7 @@
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    # Note: Android version already set earlier (line 89-94), no need to set again
+    # Note: Android version already set earlier (lines 104-109), no need to set again
 
     # Set OneUI version
     invoke-static {}, Lcom/idm/fotaagent/enabler/ui/common/subcontent/SoftwareUpdateInformation$Latest;->getOneUiVersion()Ljava/lang/String;
