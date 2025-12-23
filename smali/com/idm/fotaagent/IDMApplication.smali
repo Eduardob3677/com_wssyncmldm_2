@@ -147,6 +147,8 @@
 
     invoke-super {p0}, Landroid/app/Application;->onCreate()V
 
+    sput-object p0, Lcom/idm/fotaagent/IDMApplication;->context:Landroid/content/Context;
+
     invoke-static {}, Lcom/idm/fotaagent/IDMApplication;->enableLog()V
 
     const-string p0, ">>>>>>>>>>   com.wssyncmldm starts   <<<<<<<<<<"

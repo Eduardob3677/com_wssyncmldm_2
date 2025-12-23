@@ -44,6 +44,11 @@
             android:summary="@string/mock_device_bootloader_summary" />
         
         <androidx.preference.EditTextPreference
+            android:key="mock_device_software_version"
+            android:title="@string/mock_device_software_version"
+            android:summary="@string/mock_device_software_version_summary" />
+        
+        <androidx.preference.EditTextPreference
             android:key="mock_device_pda_version"
             android:title="@string/mock_device_pda_version"
             android:summary="@string/mock_device_pda_version_summary" />
