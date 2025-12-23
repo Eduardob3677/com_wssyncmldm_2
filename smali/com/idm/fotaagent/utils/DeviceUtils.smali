@@ -464,11 +464,11 @@
 
     invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getSoftwareVersion(Landroid/content/Context;)Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
 
-    if-eqz v0, :cond_real
+    if-eqz v1, :cond_real
 
-    return-object v0
+    return-object v1
 
     :cond_real
     # Always construct firmware version from individual components (PDA/CSC/Phone)
