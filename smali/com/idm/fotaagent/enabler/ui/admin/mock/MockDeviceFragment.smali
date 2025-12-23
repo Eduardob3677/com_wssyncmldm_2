@@ -465,10 +465,10 @@
     # Initialize with real device values on first launch
     invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->initializeDefaultValues()V
 
-    # Enable options menu
-    const/4 v0, 0x1
+    # Disabled options menu due to Resources$NotFoundException
+    # const/4 v0, 0x1
 
-    invoke-virtual {p0, v0}, Landroidx/fragment/app/Fragment;->setHasOptionsMenu(Z)V
+    # invoke-virtual {p0, v0}, Landroidx/fragment/app/Fragment;->setHasOptionsMenu(Z)V
 
     return-void
 .end method
