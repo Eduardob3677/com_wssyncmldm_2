@@ -7,8 +7,6 @@
 
 
 # instance fields
-.field private mPreferenceChangeListener:Landroid/content/SharedPreferences$OnSharedPreferenceChangeListener;
-
 .field private mIsUpdatingPreference:Z
 
 
