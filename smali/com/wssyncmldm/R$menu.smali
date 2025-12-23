@@ -15,6 +15,8 @@
 
 
 # static fields
+.field public static final mock_device_menu:I = 0x7f0f0001
+
 .field public static final nv_dummy_overflow_menu_icon:I = 0x7f0f0000
 
 

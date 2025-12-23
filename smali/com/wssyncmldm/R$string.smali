@@ -1017,6 +1017,14 @@
 
 .field public static final v7_preference_on:I = 0x7f1301f8
 
+.field public static final mock_device_reset_defaults:I = 0x7f1301f9
+
+.field public static final mock_device_reset_defaults_summary:I = 0x7f1301fa
+
+.field public static final mock_device_reset_dialog_title:I = 0x7f1301fb
+
+.field public static final mock_device_reset_dialog_message:I = 0x7f1301fc
+
 
 # direct methods
 .method private constructor <init>()V

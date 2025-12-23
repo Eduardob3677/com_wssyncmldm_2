@@ -284,6 +284,10 @@ https://www.samsung.com/global/download/smartswitchmac/"</string>
     <string name="mock_device_selinux_status_summary">SELinux enforcing status</string>
     <string name="mock_device_bootloader_locked">Bootloader Locked</string>
     <string name="mock_device_bootloader_locked_summary">Bootloader lock status (locked=secure, unlocked=modified)</string>
+    <string name="mock_device_reset_defaults">Reset to Defaults</string>
+    <string name="mock_device_reset_defaults_summary">Reset all mock values to real device values</string>
+    <string name="mock_device_reset_dialog_title">Reset to Defaults?</string>
+    <string name="mock_device_reset_dialog_message">All mock device values will be reset to the current real device values. This action cannot be undone.</string>
     <string name="error_a11y_label">Error: invalid</string>
     <string name="error_icon_content_description">Error</string>
     <string name="expand_button_title">Advanced</string>
