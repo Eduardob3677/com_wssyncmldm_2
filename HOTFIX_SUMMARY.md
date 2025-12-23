@@ -41,7 +41,7 @@ Disabled all calls to `setSummary()` method:
 ```smali
 .method private syncPreferenceSummaries()V
     # ... complex logic to update summaries
-    invoke-virtual {v2, v4}, Landroidx/preference/Preference;->setSummary(...)V  # CRASH!
+    invoke-virtual {v2, v4}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V  # CRASH!
 ```
 
 **After (safe):**

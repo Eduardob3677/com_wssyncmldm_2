@@ -505,8 +505,9 @@
     .locals 0
 
     # DISABLED: The setSummary() method does not exist in this obfuscated androidx.preference build
-    # Preference summaries cannot be updated programmatically
-    # This method is kept for compatibility but does nothing
+    # Original purpose: Update preference summaries to show current values in the UI
+    # Impact: Users will see XML default summaries instead of current preference values
+    # Note: This does not affect functionality - preferences still sync correctly via SharedPreferences
     return-void
 .end method
 
