@@ -3921,6 +3921,8 @@
     <public type="layout" name="two_progress_bars_content" id="0x7f0d00cd" />
     <public type="layout" name="whats_new_content" id="0x7f0d00cf" />
     <public type="layout" name="whats_new_header" id="0x7f0d00d0" />
+    <public type="menu" name="nv_dummy_overflow_menu_icon" id="0x7f0f0000" />
+    <public type="menu" name="mock_device_menu" id="0x7f0f0001" />
     <public type="mipmap" name="ic_launcher" id="0x7f100000" />
     <public type="mipmap" name="icon_ut" id="0x7f100001" />
     <public type="plurals" name="PLURAL_FOTA_AUTO_INSTALL_DEVICE" id="0x7f110000" />
