@@ -124,7 +124,6 @@
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
     # Set device ID from RegisteredDeviceRepository
-    :try_start_device_id
     new-instance v3, Lcom/idm/fotaagent/database/room/data/repository/RegisteredDeviceRepository;
 
     invoke-direct {v3, v0}, Lcom/idm/fotaagent/database/room/data/repository/RegisteredDeviceRepository;-><init>(Landroid/content/Context;)V
@@ -146,12 +145,10 @@
     const-string p0, "mock_device_id"
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
-    :try_end_device_id
-    :catch_device_id
+
     :skip_device_id
 
     # Set IMSI from TelephonyManager
-    :try_start_imsi
     const-string v3, "phone"
 
     invoke-virtual {v0, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -171,8 +168,7 @@
     const-string p0, "mock_device_imsi"
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
-    :try_end_imsi
-    :catch_imsi
+
     :skip_imsi
 
     # Set language from Locale
@@ -225,6 +221,16 @@
 
     if-eqz v3, :skip_csc
 
+    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v4
+
+    if-eqz v4, :csc_not_empty
+
+    goto :skip_csc
+
+    :csc_not_empty
+
     const-string p0, "mock_device_csc_version"
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
@@ -241,6 +247,16 @@
     move-result-object v3
 
     if-eqz v3, :skip_phone
+
+    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v4
+
+    if-eqz v4, :phone_not_empty
+
+    goto :skip_phone
+
+    :phone_not_empty
 
     const-string p0, "mock_device_phone_version"
 
