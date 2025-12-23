@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="35" android:compileSdkVersionCodename="15" android:sharedUserId="android.uid.system" package="com.wssyncmldm" platformBuildVersionCode="35" platformBuildVersionName="15">
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="35" android:compileSdkVersionCodename="15" android:sharedUserId="android.uid.system" package="com.wssyncmldm" platformBuildVersionCode="35" platformBuildVersionName="15">
     <permission android:name="com.samsung.android.app.fotaagent.permission.READ_DATABASES" android:protectionLevel="signatureOrSystem"/>
     <permission android:name="com.idm.fotaagent.permission.PROVIDER" android:protectionLevel="signatureOrSystem"/>
     <uses-permission android:name="com.sec.android.fotaclient.permission.FOTA"/>
