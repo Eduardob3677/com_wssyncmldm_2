@@ -127,9 +127,26 @@
 
     move-result-object v3
 
+    if-eqz v3, :skip_sim_operator
+
     const-string p0, "mock_device_sim_operator"
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    :skip_sim_operator
+
+    # Set SIM operator name
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getSimOperatorName(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v3
+
+    if-eqz v3, :skip_sim_operator_name
+
+    const-string p0, "mock_device_sim_operator_name"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    :skip_sim_operator_name
 
     # Set device ID from RegisteredDeviceRepository
     new-instance v3, Lcom/idm/fotaagent/database/room/data/repository/RegisteredDeviceRepository;
@@ -167,6 +184,7 @@
 
     if-eqz v3, :skip_imsi
 
+    :try_start_imsi
     invoke-virtual {v3}, Landroid/telephony/TelephonyManager;->getSubscriberId()Ljava/lang/String;
 
     move-result-object v3
@@ -176,6 +194,15 @@
     const-string p0, "mock_device_imsi"
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    :try_end_imsi
+    .catch Ljava/lang/SecurityException; {:try_start_imsi .. :try_end_imsi} :catch_imsi
+
+    goto :skip_imsi
+
+    :catch_imsi
+    move-exception v3
+
+    invoke-static {v3}, Lcom/samsung/android/fotaagent/common/log/Log;->printStackTrace(Ljava/lang/Throwable;)V
 
     :skip_imsi
 
