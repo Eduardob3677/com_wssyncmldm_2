@@ -466,11 +466,7 @@
 
     move-result-object v0
 
-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_real
+    if-eqz v0, :cond_real
 
     return-object v0
 
