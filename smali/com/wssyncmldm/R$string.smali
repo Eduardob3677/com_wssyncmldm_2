@@ -1021,9 +1021,9 @@
 
 .field public static final mock_device_reset_defaults_summary:I = 0x7f1301fa
 
-.field public static final mock_device_reset_dialog_title:I = 0x7f130001
+.field public static final mock_device_reset_dialog_title:I = 0x7f1301fb
 
-.field public static final mock_device_reset_dialog_message:I = 0x7f130002
+.field public static final mock_device_reset_dialog_message:I = 0x7f1301fc
 
 
 # direct methods

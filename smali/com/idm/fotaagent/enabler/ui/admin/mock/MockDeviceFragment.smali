@@ -875,11 +875,13 @@
 
     invoke-direct {v1, v0}, Landroidx/appcompat/app/b$a;-><init>(Landroid/content/Context;)V
 
-    const v0, 0x7f130001
+    # Set dialog title (mock_device_reset_dialog_title)
+    const v0, 0x7f1301fb
 
     invoke-virtual {v1, v0}, Landroidx/appcompat/app/b$a;->setTitle(I)Landroidx/appcompat/app/b$a;
 
-    const v0, 0x7f130002
+    # Set dialog message (mock_device_reset_dialog_message)
+    const v0, 0x7f1301fc
 
     invoke-virtual {v1, v0}, Landroidx/appcompat/app/b$a;->setMessage(I)Landroidx/appcompat/app/b$a;
 
@@ -887,10 +889,12 @@
 
     invoke-direct {v0, p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment$1;-><init>(Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;)V
 
+    # Positive button (android.R.string.ok)
     const v3, 0x104000a
 
     invoke-virtual {v1, v3, v0}, Landroidx/appcompat/app/b$a;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/b$a;
 
+    # Negative button (android.R.string.cancel)
     const/high16 v0, 0x1040000
 
     const/4 v3, 0x0
