@@ -123,6 +123,147 @@
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
+    # Set device ID from RegisteredDeviceRepository
+    new-instance v3, Lcom/idm/fotaagent/database/room/data/repository/RegisteredDeviceRepository;
+
+    invoke-direct {v3, v0}, Lcom/idm/fotaagent/database/room/data/repository/RegisteredDeviceRepository;-><init>(Landroid/content/Context;)V
+
+    invoke-virtual {v3}, Lcom/idm/fotaagent/database/room/data/repository/RegisteredDeviceRepository;->getDeviceId()Ljava/util/Optional;
+
+    move-result-object v3
+
+    const/4 v4, 0x0
+
+    invoke-virtual {v3, v4}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/String;
+
+    if-eqz v3, :skip_device_id
+
+    const-string p0, "mock_device_id"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    :skip_device_id
+
+    # Set IMSI from TelephonyManager
+    const-string v3, "phone"
+
+    invoke-virtual {v0, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/telephony/TelephonyManager;
+
+    if-eqz v3, :skip_imsi
+
+    invoke-virtual {v3}, Landroid/telephony/TelephonyManager;->getSubscriberId()Ljava/lang/String;
+
+    move-result-object v3
+
+    if-eqz v3, :skip_imsi
+
+    const-string p0, "mock_device_imsi"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    :skip_imsi
+
+    # Set language from Locale
+    invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
+
+    move-result-object v3
+
+    const-string p0, "mock_device_language"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    # Set MCC from FotaTelephonyManager
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->readSimMCC(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v3
+
+    if-eqz v3, :skip_mcc
+
+    const-string p0, "mock_device_mcc"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    :skip_mcc
+
+    # Set MNC from FotaTelephonyManager
+    invoke-static {v0}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->readSimMNC(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v3
+
+    if-eqz v3, :skip_mnc
+
+    const-string p0, "mock_device_mnc"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    :skip_mnc
+
+    # Set CSC version from SemSystemProperties
+    const-string v3, "ril.official_cscver"
+
+    const-string v4, ""
+
+    invoke-static {v3, v4}, Landroid/os/SemSystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    if-eqz v3, :skip_csc
+
+    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v4
+
+    if-eqz v4, :csc_not_empty
+
+    goto :skip_csc
+
+    :csc_not_empty
+
+    const-string p0, "mock_device_csc_version"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    :skip_csc
+
+    # Set phone version from SemSystemProperties
+    const-string v3, "ril.sw_ver"
+
+    const-string v4, ""
+
+    invoke-static {v3, v4}, Landroid/os/SemSystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    if-eqz v3, :skip_phone
+
+    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v4
+
+    if-eqz v4, :phone_not_empty
+
+    goto :skip_phone
+
+    :phone_not_empty
+
+    const-string p0, "mock_device_phone_version"
+
+    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    :skip_phone
+
     # Set Knox status (default true)
     const-string p0, "mock_device_knox_status"
 
