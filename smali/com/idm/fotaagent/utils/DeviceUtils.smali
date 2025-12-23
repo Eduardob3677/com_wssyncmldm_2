@@ -84,7 +84,14 @@
 
     move-result-object v0
 
+    # Check if mock value is null or empty
     if-eqz v0, :cond_real
+
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_real
 
     return-object v0
 
@@ -128,7 +135,14 @@
 
     move-result-object v0
 
+    # Check if mock value is null or empty
     if-eqz v0, :cond_real
+
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_real
 
     return-object v0
 
@@ -432,7 +446,14 @@
 
     move-result-object v0
 
+    # Check if mock value is null or empty
     if-eqz v0, :cond_real
+
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_real
 
     return-object v0
 
@@ -466,7 +487,14 @@
 
     move-result-object v1
 
+    # Check if mock value is null or empty
     if-eqz v1, :cond_real
+
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_real
 
     return-object v1
 
@@ -526,7 +554,14 @@
 
     move-result-object v0
 
+    # Check if mock value is null or empty
     if-eqz v0, :cond_real
+
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_real
 
     return-object v0
 
@@ -594,7 +629,14 @@
 
     move-result-object v0
 
+    # Check if mock value is null or empty
     if-eqz v0, :cond_real
+
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_real
 
     return-object v0
 
@@ -626,7 +668,14 @@
 
     move-result-object v0
 
+    # Check if mock value is null or empty
     if-eqz v0, :cond_real
+
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_real
 
     return-object v0
 
