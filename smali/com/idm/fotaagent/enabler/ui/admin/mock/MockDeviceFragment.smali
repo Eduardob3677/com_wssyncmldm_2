@@ -5,6 +5,21 @@
 # interfaces
 .implements Landroid/content/SharedPreferences$OnSharedPreferenceChangeListener;
 
+# MockDeviceFragment - Preference screen for mock device configuration
+# 
+# This fragment allows administrators to override device information used by the FOTA agent.
+# It provides a UI to customize device properties such as:
+# - Manufacturer, model, and serial number
+# - Android/OneUI versions and build info
+# - Network operator and SIM information
+# - Security status (Knox, root, SELinux, bootloader)
+# 
+# Key features:
+# - Initializes preferences with real device values on first launch
+# - Synchronizes PDA version and software version fields (they mirror each other)
+# - Persists all values in SharedPreferences named "mock_device_prefs"
+# - Provides a reset function to restore device defaults
+
 
 # instance fields
 .field private mIsUpdatingPreference:Z
