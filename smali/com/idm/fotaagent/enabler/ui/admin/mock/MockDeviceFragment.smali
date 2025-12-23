@@ -660,11 +660,26 @@
 
     move-result-object p1
 
+    if-nez p1, :try_cast_sw_pref
+
+    goto :cond_3
+
+    :try_cast_sw_pref
+    :try_start_sw_pref
     check-cast p1, Landroidx/preference/EditTextPreference;
 
-    if-eqz p1, :cond_3
-
     invoke-virtual {p1, v2}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    :try_end_sw_pref
+    .catch Ljava/lang/ClassCastException; {:try_start_sw_pref .. :try_end_sw_pref} :catch_sw_pref
+
+    goto :cond_3
+
+    :catch_sw_pref
+    move-exception p1
+
+    const-string p1, "onSharedPreferenceChanged: Software version preference is not EditTextPreference"
+
+    invoke-static {p1}, Lcom/samsung/android/fotaagent/common/log/Log;->W(Ljava/lang/Object;)V
 
     :cond_3
     # Reset flag
@@ -713,11 +728,26 @@
 
     move-result-object p1
 
+    if-nez p1, :try_cast_pda_pref
+
+    goto :cond_5
+
+    :try_cast_pda_pref
+    :try_start_pda_pref
     check-cast p1, Landroidx/preference/EditTextPreference;
 
-    if-eqz p1, :cond_5
-
     invoke-virtual {p1, v2}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    :try_end_pda_pref
+    .catch Ljava/lang/ClassCastException; {:try_start_pda_pref .. :try_end_pda_pref} :catch_pda_pref
+
+    goto :cond_5
+
+    :catch_pda_pref
+    move-exception p1
+
+    const-string p1, "onSharedPreferenceChanged: PDA version preference is not EditTextPreference"
+
+    invoke-static {p1}, Lcom/samsung/android/fotaagent/common/log/Log;->W(Ljava/lang/Object;)V
 
     :cond_5
     # Reset flag
