@@ -4,3 +4,4 @@ dist/
 *.ap_
 *.dex
 *.orig
+build/
