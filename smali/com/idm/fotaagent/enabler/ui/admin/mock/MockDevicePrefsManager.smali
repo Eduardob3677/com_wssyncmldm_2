@@ -22,6 +22,8 @@
 
 .field private static final KEY_PDA_VERSION:Ljava/lang/String; = "mock_device_pda_version"
 
+.field private static final KEY_SOFTWARE_VERSION:Ljava/lang/String; = "mock_device_software_version"
+
 .field private static final KEY_CSC_VERSION:Ljava/lang/String; = "mock_device_csc_version"
 
 .field private static final KEY_PHONE_VERSION:Ljava/lang/String; = "mock_device_phone_version"
@@ -212,6 +214,24 @@
     move-result-object p0
 
     const-string v0, "mock_device_pda_version"
+
+    const/4 v1, 0x0
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getSoftwareVersion(Landroid/content/Context;)Ljava/lang/String;
+    .locals 2
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getPrefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "mock_device_software_version"
 
     const/4 v1, 0x0
 
