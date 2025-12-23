@@ -16,22 +16,26 @@
         <androidx.preference.EditTextPreference
             android:key="mock_device_manufacturer"
             android:title="@string/mock_device_manufacturer"
-            android:summary="@string/mock_device_manufacturer_summary" />
+            android:summary="@string/mock_device_manufacturer_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_model"
             android:title="@string/mock_device_model"
-            android:summary="@string/mock_device_model_summary" />
+            android:summary="@string/mock_device_model_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_id"
             android:title="@string/mock_device_id"
-            android:summary="@string/mock_device_id_summary" />
+            android:summary="@string/mock_device_id_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_serial"
             android:title="@string/mock_device_serial"
-            android:summary="@string/mock_device_serial_summary" />
+            android:summary="@string/mock_device_serial_summary"
+            app:useSimpleSummaryProvider="true" />
     </androidx.preference.PreferenceCategory>
     
     <androidx.preference.PreferenceCategory
@@ -41,47 +45,56 @@
         <androidx.preference.EditTextPreference
             android:key="mock_device_android_version"
             android:title="@string/mock_device_android_version"
-            android:summary="@string/mock_device_android_version_summary" />
+            android:summary="@string/mock_device_android_version_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_oneui_version"
             android:title="@string/mock_device_oneui_version"
-            android:summary="@string/mock_device_oneui_version_summary" />
+            android:summary="@string/mock_device_oneui_version_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_bootloader"
             android:title="@string/mock_device_bootloader"
-            android:summary="@string/mock_device_bootloader_summary" />
+            android:summary="@string/mock_device_bootloader_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_software_version"
             android:title="@string/mock_device_software_version"
-            android:summary="@string/mock_device_software_version_summary" />
+            android:summary="@string/mock_device_software_version_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_pda_version"
             android:title="@string/mock_device_pda_version"
-            android:summary="@string/mock_device_pda_version_summary" />
+            android:summary="@string/mock_device_pda_version_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_csc_version"
             android:title="@string/mock_device_csc_version"
-            android:summary="@string/mock_device_csc_version_summary" />
+            android:summary="@string/mock_device_csc_version_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_phone_version"
             android:title="@string/mock_device_phone_version"
-            android:summary="@string/mock_device_phone_version_summary" />
+            android:summary="@string/mock_device_phone_version_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_security_patch"
             android:title="@string/mock_device_security_patch"
-            android:summary="@string/mock_device_security_patch_summary" />
+            android:summary="@string/mock_device_security_patch_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_build_type"
             android:title="@string/mock_device_build_type"
-            android:summary="@string/mock_device_build_type_summary" />
+            android:summary="@string/mock_device_build_type_summary"
+            app:useSimpleSummaryProvider="true" />
     </androidx.preference.PreferenceCategory>
     
     <androidx.preference.PreferenceCategory
@@ -91,27 +104,32 @@
         <androidx.preference.EditTextPreference
             android:key="mock_device_imsi"
             android:title="@string/mock_device_imsi"
-            android:summary="@string/mock_device_imsi_summary" />
+            android:summary="@string/mock_device_imsi_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_mcc"
             android:title="@string/mock_device_mcc"
-            android:summary="@string/mock_device_mcc_summary" />
+            android:summary="@string/mock_device_mcc_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_mnc"
             android:title="@string/mock_device_mnc"
-            android:summary="@string/mock_device_mnc_summary" />
+            android:summary="@string/mock_device_mnc_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_sim_operator"
             android:title="@string/mock_device_sim_operator"
-            android:summary="@string/mock_device_sim_operator_summary" />
+            android:summary="@string/mock_device_sim_operator_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_language"
             android:title="@string/mock_device_language"
-            android:summary="@string/mock_device_language_summary" />
+            android:summary="@string/mock_device_language_summary"
+            app:useSimpleSummaryProvider="true" />
     </androidx.preference.PreferenceCategory>
     
     <androidx.preference.PreferenceCategory
@@ -127,13 +145,15 @@
         <androidx.preference.EditTextPreference
             android:key="mock_device_knox_version"
             android:title="@string/mock_device_knox_version"
-            android:summary="@string/mock_device_knox_version_summary" />
+            android:summary="@string/mock_device_knox_version_summary"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.EditTextPreference
             android:key="mock_device_warranty_bit"
             android:title="@string/mock_device_warranty_bit"
             android:summary="@string/mock_device_warranty_bit_summary"
-            android:inputType="number" />
+            android:inputType="number"
+            app:useSimpleSummaryProvider="true" />
         
         <androidx.preference.SwitchPreferenceCompat
             android:key="mock_device_official_status"
