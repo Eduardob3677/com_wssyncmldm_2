@@ -635,9 +635,10 @@
 
     invoke-static {p1}, Lcom/samsung/android/fotaagent/common/log/Log;->I(Ljava/lang/Object;)V
 
-    # Load preferences from XML resource
-    # Note: SharedPreferences are accessed directly via Context.getSharedPreferences()
-    # throughout this fragment, so we don't need to configure PreferenceManager
+    # Note: SharedPreferences name cannot be set via PreferenceManager in this obfuscated build
+    # All SharedPreferences access is done directly via Context.getSharedPreferences("mock_device_prefs", 0)
+    # in initializeDefaultValues(), resetToDefaults(), onResume(), onPause(), and onSharedPreferenceChanged()
+
     const p1, 0x7f160004
 
     invoke-virtual {p0, p1, p2}, Landroidx/preference/z;->setPreferencesFromResource(ILjava/lang/String;)V
