@@ -880,6 +880,22 @@
 .method public static readSimMCC(Landroid/content/Context;)Ljava/lang/String;
     .locals 3
 
+    # Check if mock is enabled and return mock value
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_real
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getMCC(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
     invoke-static {p0}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getSimState(Landroid/content/Context;)I
 
     move-result v0
@@ -919,6 +935,22 @@
 .method public static readSimMNC(Landroid/content/Context;)Ljava/lang/String;
     .locals 3
 
+    # Check if mock is enabled and return mock value
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_real
+
+    invoke-static {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getMNC(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_real
+
+    return-object v0
+
+    :cond_real
     invoke-static {p0}, Lcom/samsung/android/fotaagent/common/FotaTelephonyManager;->getSimState(Landroid/content/Context;)I
 
     move-result v0
