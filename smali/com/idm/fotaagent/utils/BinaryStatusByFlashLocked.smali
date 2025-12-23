@@ -122,8 +122,37 @@
 .end method
 
 .method private static getFlashLocked()I
-    .locals 2
+    .locals 3
 
+    # Check if mock device is enabled
+    sget-object v0, Lcom/idm/fotaagent/IDMApplication;->context:Landroid/content/Context;
+
+    if-eqz v0, :cond_real
+
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->isEnabled(Landroid/content/Context;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_real
+
+    # Get bootloader locked status from mock
+    invoke-static {v0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDevicePrefsManager;->getBootloaderLocked(Landroid/content/Context;)Z
+
+    move-result v1
+
+    # Return 1 if locked (OFFICIAL), 0 if unlocked (CUSTOM)
+    if-eqz v1, :return_unlocked
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :return_unlocked
+    const/4 v0, 0x0
+
+    return v0
+
+    :cond_real
     const-string v0, "ro.boot.flash.locked"
 
     const/4 v1, -0x1

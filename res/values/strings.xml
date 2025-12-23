@@ -251,7 +251,7 @@ https://www.samsung.com/global/download/smartswitchmac/"</string>
     <string name="mock_device_android_version">Android Version</string>
     <string name="mock_device_android_version_summary">Mock Android version (e.g., 13, 14)</string>
     <string name="mock_device_oneui_version">One UI Version</string>
-    <string name="mock_device_oneui_version_summary">Mock One UI version (e.g., 5.1, 6.0)</string>
+    <string name="mock_device_oneui_version_summary">Mock One UI version as integer (e.g., 50100 for 5.1, 60000 for 6.0)</string>
     <string name="mock_device_bootloader">Bootloader Version</string>
     <string name="mock_device_bootloader_summary">Mock bootloader version</string>
     <string name="mock_device_software_version">Software Version</string>
