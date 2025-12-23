@@ -467,6 +467,14 @@
 
     move-result-object p0
 
+    # Null check for SharedPreferences
+    if-nez p0, :cond_prefs_valid
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :cond_prefs_valid
     const-string v0, "mock_device_knox_status"
 
     const/4 v1, 0x1
@@ -521,6 +529,14 @@
 
     move-result-object p0
 
+    # Null check for SharedPreferences
+    if-nez p0, :cond_prefs_valid
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :cond_prefs_valid
     const-string v0, "mock_device_official_status"
 
     const/4 v1, 0x1
@@ -539,6 +555,14 @@
 
     move-result-object p0
 
+    # Null check for SharedPreferences
+    if-nez p0, :cond_prefs_valid
+
+    const/4 v0, 0x0
+
+    return v0
+
+    :cond_prefs_valid
     const-string v0, "mock_device_root_status"
 
     const/4 v1, 0x0
@@ -557,6 +581,14 @@
 
     move-result-object p0
 
+    # Null check for SharedPreferences
+    if-nez p0, :cond_prefs_valid
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :cond_prefs_valid
     const-string v0, "mock_device_selinux_status"
 
     const/4 v1, 0x1
@@ -575,6 +607,14 @@
 
     move-result-object p0
 
+    # Null check for SharedPreferences
+    if-nez p0, :cond_prefs_valid
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :cond_prefs_valid
     const-string v0, "mock_device_bootloader_locked"
 
     const/4 v1, 0x1

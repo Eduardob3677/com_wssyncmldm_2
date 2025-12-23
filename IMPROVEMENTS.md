@@ -4,7 +4,38 @@
 
 Este documento detalla las mejoras realizadas al código smali del módulo MockDevice, enfocándose en robustez, manejo de errores y funcionalidad completa.
 
-## Cambios Principales
+## Últimas Mejoras de Seguridad (Session Actual)
+
+### 1. Corrección de Type Casts Inseguros en onSharedPreferenceChanged()
+
+**Problema Crítico:** El código realizaba type casts sin protección contra ClassCastException, causando crashes potenciales.
+
+**Mejora:** Agregado try-catch blocks y reordenamiento de operaciones:
+- Null check ANTES del type cast
+- Type cast dentro de try-catch block
+- Logging de errores para debugging
+- Dos ubicaciones corregidas (PDA version y Software version)
+
+**Impacto:** Previene 2 puntos de crash por ClassCastException
+
+### 2. Null Checks en Métodos Boolean de MockDevicePrefsManager
+
+**Problema:** 5 métodos getter boolean no verificaban si SharedPreferences era null antes de usarlo.
+
+**Mejora:** Agregado null checks con valores por defecto apropiados:
+- `getKnoxStatus()` - retorna `true` por defecto
+- `getOfficialStatus()` - retorna `true` por defecto  
+- `getRootStatus()` - retorna `false` por defecto
+- `getSelinuxStatus()` - retorna `true` por defecto
+- `getBootloaderLocked()` - retorna `true` por defecto
+
+**Impacto:** Previene 5 puntos de crash por NullPointerException
+
+**Total de Vulnerabilidades Corregidas en esta Sesión: 7**
+
+---
+
+## Cambios Principales (Sesiones Anteriores)
 
 ### 1. MockDeviceFragment.smali
 

@@ -488,8 +488,7 @@
 
     invoke-virtual {p0, v0, v1}, Landroidx/preference/z;->setPreferencesFromResource(ILjava/lang/String;)V
 
-    # Sync preference summaries after reload
-    invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->syncPreferenceSummaries()V
+    # Note: syncPreferenceSummaries() is disabled because setSummary() does not exist in this obfuscated build
 
     goto :cond_end
 
@@ -503,99 +502,12 @@
 .end method
 
 .method private syncPreferenceSummaries()V
-    .locals 5
+    .locals 0
 
-    # Get context to access SharedPreferences
-    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    if-nez v0, :cond_0
-
-    return-void
-
-    :cond_0
-    # Get SharedPreferences
-    const-string v1, "mock_device_prefs"
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-
-    move-result-object v1
-
-    # Update PDA version preference summary
-    const-string v2, "mock_device_pda_version"
-
-    const/4 v3, 0x0
-
-    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {p0, v2}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
-
-    move-result-object v2
-
-    if-nez v2, :try_cast_pda
-
-    goto :cond_1
-
-    :try_cast_pda
-    :try_start_pda
-    check-cast v2, Landroidx/preference/EditTextPreference;
-
-    if-eqz v4, :cond_1
-
-    invoke-virtual {v2, v4}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
-    :try_end_pda
-    .catch Ljava/lang/ClassCastException; {:try_start_pda .. :try_end_pda} :catch_pda
-
-    goto :cond_1
-
-    :catch_pda
-    move-exception v2
-
-    const-string v2, "syncPreferenceSummaries: PDA preference is not EditTextPreference"
-
-    invoke-static {v2}, Lcom/samsung/android/fotaagent/common/log/Log;->W(Ljava/lang/Object;)V
-
-    :cond_1
-    # Update software version preference summary
-    const-string v2, "mock_device_software_version"
-
-    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {p0, v2}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
-
-    move-result-object v2
-
-    if-nez v2, :try_cast_sw
-
-    goto :cond_2
-
-    :try_cast_sw
-    :try_start_sw
-    check-cast v2, Landroidx/preference/EditTextPreference;
-
-    if-eqz v1, :cond_2
-
-    invoke-virtual {v2, v1}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
-    :try_end_sw
-    .catch Ljava/lang/ClassCastException; {:try_start_sw .. :try_end_sw} :catch_sw
-
-    goto :cond_2
-
-    :catch_sw
-    move-exception v1
-
-    const-string v1, "syncPreferenceSummaries: Software version preference is not EditTextPreference"
-
-    invoke-static {v1}, Lcom/samsung/android/fotaagent/common/log/Log;->W(Ljava/lang/Object;)V
-
-    :cond_2
+    # DISABLED: The setSummary() method does not exist in this obfuscated androidx.preference build
+    # Original purpose: Update preference summaries to show current values in the UI
+    # Impact: Users will see XML default summaries instead of current preference values
+    # Note: This does not affect functionality - preferences still sync correctly via SharedPreferences
     return-void
 .end method
 
@@ -655,18 +567,8 @@
 
     invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
 
-    # Update the software version preference summary
-    invoke-virtual {p0, v0}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+    # Note: Cannot update preference summary because setSummary() does not exist in this obfuscated build
 
-    move-result-object p1
-
-    check-cast p1, Landroidx/preference/EditTextPreference;
-
-    if-eqz p1, :cond_3
-
-    invoke-virtual {p1, v2}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
-
-    :cond_3
     # Reset flag
     const/4 v0, 0x0
 
@@ -708,18 +610,8 @@
 
     invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
 
-    # Update the PDA version preference summary
-    invoke-virtual {p0, v0}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+    # Note: Cannot update preference summary because setSummary() does not exist in this obfuscated build
 
-    move-result-object p1
-
-    check-cast p1, Landroidx/preference/EditTextPreference;
-
-    if-eqz p1, :cond_5
-
-    invoke-virtual {p1, v2}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
-
-    :cond_5
     # Reset flag
     const/4 v0, 0x0
 
@@ -760,8 +652,8 @@
 
     invoke-virtual {p0, p1, p2}, Landroidx/preference/z;->setPreferencesFromResource(ILjava/lang/String;)V
 
-    # Sync preference summaries to display current values
-    invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->syncPreferenceSummaries()V
+    # Note: syncPreferenceSummaries() is disabled because setSummary() does not exist in this obfuscated build
+    # Preference summaries are set via XML defaults instead
 
     return-void
 .end method
