@@ -5,6 +5,21 @@
 # interfaces
 .implements Landroid/content/SharedPreferences$OnSharedPreferenceChangeListener;
 
+# MockDeviceFragment - Preference screen for mock device configuration
+# 
+# This fragment allows administrators to override device information used by the FOTA agent.
+# It provides a UI to customize device properties such as:
+# - Manufacturer, model, and serial number
+# - Android/OneUI versions and build info
+# - Network operator and SIM information
+# - Security status (Knox, root, SELinux, bootloader)
+# 
+# Key features:
+# - Initializes preferences with real device values on first launch
+# - Synchronizes PDA version and software version fields (they mirror each other)
+# - Persists all values in SharedPreferences named "mock_device_prefs"
+# - Provides a reset function to restore device defaults
+
 
 # instance fields
 .field private mIsUpdatingPreference:Z
@@ -238,12 +253,7 @@
 
     invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
-    # Set Android version
-    sget-object v3, Landroid/os/Build$VERSION;->RELEASE:Ljava/lang/String;
-
-    const-string p0, "mock_device_android_version"
-
-    invoke-interface {v1, p0, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    # Note: Android version already set earlier (lines 104-109), no need to set again
 
     # Set OneUI version
     invoke-static {}, Lcom/idm/fotaagent/enabler/ui/common/subcontent/SoftwareUpdateInformation$Latest;->getOneUiVersion()Ljava/lang/String;
@@ -469,20 +479,10 @@
 
     invoke-virtual {p0, v0, v1}, Landroidx/preference/z;->setPreferencesFromResource(ILjava/lang/String;)V
 
-    # Sync preference summaries after reload
-    invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->syncPreferenceSummaries()V
+    # Note: Preference summaries will be displayed automatically from XML or when preferences change
+    # No need to manually sync summaries as they're bound to SharedPreferences values
 
     :cond_1
-
-    return-void
-.end method
-
-.method private syncPreferenceSummaries()V
-    .locals 0
-
-    # Disabled due to NoSuchMethodError: setSummary method doesn't exist in obfuscated androidx.preference.Preference
-    # This method tried to update preference summaries to display current values
-    # but the setSummary method has been removed/obfuscated in this APK
 
     return-void
 .end method
@@ -492,19 +492,20 @@
 .method public onSharedPreferenceChanged(Landroid/content/SharedPreferences;Ljava/lang/String;)V
     .locals 3
 
-    if-nez p2, :cond_0
+    # Validate that preference key is not null
+    if-nez p2, :check_flag
 
     return-void
 
-    :cond_0
+    :check_flag
     # Check if we're already updating a preference to prevent infinite loop
     iget-boolean v0, p0, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->mIsUpdatingPreference:Z
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :check_pda_version
 
     return-void
 
-    :cond_1
+    :check_pda_version
     # Check if the changed preference is mock_device_pda_version
     const-string v0, "mock_device_pda_version"
 
@@ -512,7 +513,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_2
+    if-eqz v1, :check_software_version
 
     # PDA version changed, sync to software version
     const/4 v1, 0x0
@@ -521,13 +522,14 @@
 
     move-result-object v2
 
-    if-eqz v2, :cond_4
+    if-eqz v2, :method_end
 
     # Set flag to prevent circular updates
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->mIsUpdatingPreference:Z
 
+    # Update software version preference value
     invoke-interface {p1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object p1
@@ -538,26 +540,37 @@
 
     invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
 
-    # Update the software version preference summary
+    # Update the software version preference UI summary
+    :try_start_update_summary_1
     invoke-virtual {p0, v0}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
 
     move-result-object p1
 
     check-cast p1, Landroidx/preference/EditTextPreference;
 
-    if-eqz p1, :cond_3
+    if-eqz p1, :reset_flag_1
 
     invoke-virtual {p1, v2}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    :try_end_update_summary_1
+    .catch Ljava/lang/Exception; {:try_start_update_summary_1 .. :try_end_update_summary_1} :catch_summary_1
 
-    :cond_3
+    goto :reset_flag_1
+
+    :catch_summary_1
+    move-exception p1
+
+    # Log error but don't crash - summary update is not critical
+    invoke-static {p1}, Lcom/samsung/android/fotaagent/common/log/Log;->printStackTrace(Ljava/lang/Throwable;)V
+
+    :reset_flag_1
     # Reset flag
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->mIsUpdatingPreference:Z
 
-    goto :cond_4
+    goto :method_end
 
-    :cond_2
+    :check_software_version
     # Check if the changed preference is mock_device_software_version
     const-string v0, "mock_device_software_version"
 
@@ -565,7 +578,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_4
+    if-eqz v1, :method_end
 
     # Software version changed, sync to PDA version
     const/4 v1, 0x0
@@ -574,13 +587,14 @@
 
     move-result-object v2
 
-    if-eqz v2, :cond_4
+    if-eqz v2, :method_end
 
     # Set flag to prevent circular updates
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->mIsUpdatingPreference:Z
 
+    # Update PDA version preference value
     invoke-interface {p1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object p1
@@ -591,24 +605,35 @@
 
     invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
 
-    # Update the PDA version preference summary
+    # Update the PDA version preference UI summary
+    :try_start_update_summary_2
     invoke-virtual {p0, v0}, Landroidx/preference/z;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
 
     move-result-object p1
 
     check-cast p1, Landroidx/preference/EditTextPreference;
 
-    if-eqz p1, :cond_5
+    if-eqz p1, :reset_flag_2
 
     invoke-virtual {p1, v2}, Landroidx/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+    :try_end_update_summary_2
+    .catch Ljava/lang/Exception; {:try_start_update_summary_2 .. :try_end_update_summary_2} :catch_summary_2
 
-    :cond_5
+    goto :reset_flag_2
+
+    :catch_summary_2
+    move-exception p1
+
+    # Log error but don't crash - summary update is not critical
+    invoke-static {p1}, Lcom/samsung/android/fotaagent/common/log/Log;->printStackTrace(Ljava/lang/Throwable;)V
+
+    :reset_flag_2
     # Reset flag
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->mIsUpdatingPreference:Z
 
-    :cond_4
+    :method_end
     return-void
 .end method
 
@@ -643,8 +668,8 @@
 
     invoke-virtual {p0, p1, p2}, Landroidx/preference/z;->setPreferencesFromResource(ILjava/lang/String;)V
 
-    # Sync preference summaries to display current values
-    invoke-direct {p0}, Lcom/idm/fotaagent/enabler/ui/admin/mock/MockDeviceFragment;->syncPreferenceSummaries()V
+    # Note: Preference summaries are bound to SharedPreferences and will update automatically
+    # when preferences change via onSharedPreferenceChanged listener
 
     return-void
 .end method

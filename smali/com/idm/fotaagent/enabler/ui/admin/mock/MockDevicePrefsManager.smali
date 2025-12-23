@@ -2,6 +2,24 @@
 .super Ljava/lang/Object;
 .source "SourceFile"
 
+# MockDevicePrefsManager - Utility class for accessing mock device preferences
+#
+# This class provides static methods to retrieve mock device configuration values
+# from SharedPreferences. It serves as a centralized access point for reading
+# device properties that have been configured via MockDeviceFragment.
+#
+# All methods:
+# - Use the SharedPreferences name "mock_device_prefs"
+# - Are thread-safe (SharedPreferences handles synchronization)
+# - Return appropriate default values when preferences are not set
+# - Can be called from any context (requires Context parameter)
+#
+# Usage example:
+#   if (MockDevicePrefsManager.isEnabled(context)) {
+#       String model = MockDevicePrefsManager.getModel(context);
+#       // Use mock model instead of Build.MODEL
+#   }
+
 
 # static fields
 .field private static final PREF_NAME:Ljava/lang/String; = "mock_device_prefs"

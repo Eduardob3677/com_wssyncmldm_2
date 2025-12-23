@@ -5,6 +5,12 @@
 # interfaces
 .implements Landroid/content/DialogInterface$OnClickListener;
 
+# MockDeviceFragment$1 - Dialog click listener for reset confirmation
+#
+# This anonymous inner class handles the "OK" button click in the reset confirmation dialog.
+# When the user confirms the reset action, this listener calls the resetToDefaults() method
+# on the parent MockDeviceFragment to restore all preferences to device default values.
+
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
