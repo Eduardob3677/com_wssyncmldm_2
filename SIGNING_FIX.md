@@ -112,6 +112,7 @@ To test the fix:
 - `SIGNING_FIX.md` - This documentation
 
 ## References
-- Android APK Signature Scheme: https://source.android.com/docs/security/features/apksigning
+- Android APK Signature Scheme v2: https://developer.android.com/about/versions/nougat/android-7.0#apk_signature_v2
+- Android App Signing: https://developer.android.com/studio/publish/app-signing
 - SignApk documentation in AOSP
 - apktool.yml specification

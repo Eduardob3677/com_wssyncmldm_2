@@ -2,9 +2,9 @@
 set -e
 
 # Get minSdkVersion from apktool.yml
-MIN_SDK_VERSION=$(grep "minSdkVersion:" apktool.yml | awk '{print $2}')
-if [ -z "$MIN_SDK_VERSION" ]; then
-    echo "Warning: Could not find minSdkVersion in apktool.yml, using default: 33"
+MIN_SDK_VERSION=$(grep "minSdkVersion:" apktool.yml | awk '{print $2}' | grep -o '[0-9]*' | head -1)
+if [ -z "$MIN_SDK_VERSION" ] || ! [[ "$MIN_SDK_VERSION" =~ ^[0-9]+$ ]]; then
+    echo "Warning: Could not find valid minSdkVersion in apktool.yml, using default: 33"
     MIN_SDK_VERSION=33
 fi
 

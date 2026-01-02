@@ -11,9 +11,9 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Get minSdkVersion from apktool.yml
-MIN_SDK_VERSION=$(grep "minSdkVersion:" apktool.yml | awk '{print $2}')
-if [ -z "$MIN_SDK_VERSION" ]; then
-    echo -e "${YELLOW}Warning: Could not find minSdkVersion in apktool.yml, using default: 33${NC}"
+MIN_SDK_VERSION=$(grep "minSdkVersion:" apktool.yml | awk '{print $2}' | grep -o '[0-9]*' | head -1)
+if [ -z "$MIN_SDK_VERSION" ] || ! [[ "$MIN_SDK_VERSION" =~ ^[0-9]+$ ]]; then
+    echo -e "${YELLOW}Warning: Could not find valid minSdkVersion in apktool.yml, using default: 33${NC}"
     MIN_SDK_VERSION=33
 fi
 
@@ -45,6 +45,17 @@ if [ -f "original.apk" ] || [ -f "original/app.apk" ]; then
     fi
     
     echo -e "${GREEN}[2/4] Found original APK: $ORIGINAL_APK${NC}"
+    
+    # Check for required tools
+    if ! command -v unzip &> /dev/null; then
+        echo -e "${RED}Error: unzip command not found. Please install unzip.${NC}"
+        exit 1
+    fi
+    if ! command -v zip &> /dev/null; then
+        echo -e "${RED}Error: zip command not found. Please install zip.${NC}"
+        exit 1
+    fi
+    
     echo "Extracting original APK..."
     
     # Clean and create extraction directory
