@@ -1,0 +1,187 @@
+name: Upload Device Tree Artifacts
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - copilot/**
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  upload-artifacts:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for device tree files
+        id: check_files
+        run: |
+          echo "Checking for device tree files..."
+          
+          # Create a flag to track if any files exist
+          FILES_EXIST=false
+          
+          # Check for main build files
+          for file in Android.bp Android.mk AndroidProducts.mk BoardConfig.mk device.mk; do
+            if [ -f "$file" ]; then
+              echo "Found: $file"
+              FILES_EXIST=true
+            else
+              echo "Missing: $file"
+            fi
+          done
+          
+          # Check for configuration files
+          for file in recovery.fstab system.prop vendor.prop vendorsetup.sh twrp.dependencies twrp_pa1q.mk; do
+            if [ -f "$file" ]; then
+              echo "Found: $file"
+              FILES_EXIST=true
+            else
+              echo "Missing: $file"
+            fi
+          done
+          
+          # Check for directories
+          for dir in prebuilt recovery; do
+            if [ -d "$dir" ]; then
+              echo "Found directory: $dir/"
+              FILES_EXIST=true
+            else
+              echo "Missing directory: $dir/"
+            fi
+          done
+          
+          echo "files_exist=$FILES_EXIST" >> $GITHUB_OUTPUT
+
+      - name: Upload Android Build Files
+        if: steps.check_files.outputs.files_exist == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build-files
+          path: |
+            Android.bp
+            Android.mk
+            AndroidProducts.mk
+            BoardConfig.mk
+            device.mk
+          if-no-files-found: ignore
+
+      - name: Upload Configuration Files
+        if: steps.check_files.outputs.files_exist == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: configuration-files
+          path: |
+            recovery.fstab
+            system.prop
+            vendor.prop
+            vendorsetup.sh
+            twrp.dependencies
+            twrp_pa1q.mk
+            README.md
+          if-no-files-found: ignore
+
+      - name: Upload Prebuilt Directory
+        if: steps.check_files.outputs.files_exist == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: prebuilt-files
+          path: |
+            prebuilt/
+          if-no-files-found: ignore
+
+      - name: Upload Recovery Directory
+        if: steps.check_files.outputs.files_exist == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: recovery-files
+          path: |
+            recovery/
+          if-no-files-found: ignore
+
+      - name: Upload Kernel Modules
+        if: steps.check_files.outputs.files_exist == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: kernel-modules
+          path: |
+            prebuilt/modules/*.ko
+            prebuilt/modules/modules.*
+          if-no-files-found: ignore
+
+      - name: Create Missing Files Report
+        run: |
+          echo "# Device Tree Files Report" > missing-files-report.md
+          echo "" >> missing-files-report.md
+          echo "Generated on: $(date)" >> missing-files-report.md
+          echo "" >> missing-files-report.md
+          echo "## Files Status" >> missing-files-report.md
+          echo "" >> missing-files-report.md
+          
+          # Function to check and report file status
+          check_file() {
+            if [ -f "$1" ]; then
+              echo "- ✅ **$1** - EXISTS" >> missing-files-report.md
+            else
+              echo "- ❌ **$1** - MISSING" >> missing-files-report.md
+            fi
+          }
+          
+          check_dir() {
+            if [ -d "$1" ]; then
+              echo "- ✅ **$1/** - EXISTS" >> missing-files-report.md
+            else
+              echo "- ❌ **$1/** - MISSING" >> missing-files-report.md
+            fi
+          }
+          
+          echo "### Build Configuration Files" >> missing-files-report.md
+          check_file "Android.bp"
+          check_file "Android.mk"
+          check_file "AndroidProducts.mk"
+          check_file "BoardConfig.mk"
+          check_file "device.mk"
+          
+          echo "" >> missing-files-report.md
+          echo "### System Configuration Files" >> missing-files-report.md
+          check_file "recovery.fstab"
+          check_file "system.prop"
+          check_file "vendor.prop"
+          check_file "vendorsetup.sh"
+          check_file "twrp.dependencies"
+          check_file "twrp_pa1q.mk"
+          check_file "README.md"
+          
+          echo "" >> missing-files-report.md
+          echo "### Prebuilt Files" >> missing-files-report.md
+          check_dir "prebuilt"
+          check_file "prebuilt/dtb.img"
+          check_file "prebuilt/fstab.qcom"
+          check_dir "prebuilt/modules"
+          
+          echo "" >> missing-files-report.md
+          echo "### Recovery Files" >> missing-files-report.md
+          check_dir "recovery"
+          check_dir "recovery/root"
+          check_dir "recovery/root/system"
+          check_dir "recovery/root/vendor"
+          
+          echo "" >> missing-files-report.md
+          echo "### Kernel Modules Count" >> missing-files-report.md
+          KO_COUNT=$(find . -name "*.ko" 2>/dev/null | wc -l)
+          echo "Total .ko files found: $KO_COUNT" >> missing-files-report.md
+          
+          cat missing-files-report.md
+
+      - name: Upload Missing Files Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: missing-files-report
+          path: missing-files-report.md
