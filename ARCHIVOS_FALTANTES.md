@@ -507,4 +507,4 @@ Este workflow:
 
 ---
 
-*Reporte generado automáticamente - $(date)*
+*Reporte generado automáticamente*
