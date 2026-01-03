@@ -46,7 +46,21 @@ To use this configuration in your device tree, add to your device's main makefil
 $(call inherit-product, path/to/com_wssyncmldm_2/device.mk)
 ```
 
-### Building
+### Building the APK
+
+Before building your ROM, you need to create the app.apk file from the decompiled source:
+
+```bash
+# Using the provided script
+./build-apk.sh
+
+# Or manually with apktool
+apktool b -o app.apk .
+```
+
+This will create `app.apk` which will be included in the ROM build.
+
+### Building the ROM
 
 When building your ROM:
 

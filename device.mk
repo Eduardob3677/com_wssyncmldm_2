@@ -5,9 +5,10 @@
 PRODUCT_PACKAGES += \
     com.wssyncmldm
 
-# Copy APK to system partition
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/app.apk:$(TARGET_COPY_OUT_SYSTEM)/priv-app/WSSyncMLDM/WSSyncMLDM.apk
+# APK will be built from source or provided separately
+# If you have a pre-built APK, place it as app.apk and uncomment:
+# PRODUCT_COPY_FILES += \
+#     $(LOCAL_PATH)/app.apk:$(TARGET_COPY_OUT_SYSTEM)/priv-app/WSSyncMLDM/WSSyncMLDM.apk
 
 # Device specific properties
 PRODUCT_PROPERTY_OVERRIDES += \
