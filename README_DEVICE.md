@@ -122,7 +122,12 @@ BOARD_USES_RECOVERY_AS_BOOT := true
 
 1. **Check partition layout**: Verify your device doesn't actually require vendor_boot
 2. **Verify boot header version**: May need to adjust `BOARD_BOOT_HEADER_VERSION`
-3. **Recovery fstab**: Update `TARGET_RECOVERY_FSTAB` to point to your device's fstab
+3. **Recovery fstab**: Update `TARGET_RECOVERY_FSTAB` in device.mk to point to your device's fstab
+   - Common locations:
+     - `device/<vendor>/<device>/recovery.fstab`
+     - `device/<vendor>/<device>/recovery/root/etc/recovery.fstab`
+   - The default `device/generic/recovery.fstab` is a placeholder
+4. **APK not found**: Run `./build-apk.sh` to build app.apk before ROM build
 
 ### If APK Not Installed
 

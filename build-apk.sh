@@ -50,6 +50,8 @@ if [ "$1" == "--sign" ]; then
         exit 1
     fi
     
+    # Sign with password prompting for security
+    echo "Note: You will be prompted for keystore and key passwords"
     jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 -keystore "$KEYSTORE" app.apk "$ALIAS"
     
     echo ""

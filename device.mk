@@ -21,6 +21,9 @@ BOARD_USES_VENDOR_BOOT := false
 
 # Recovery partition configuration
 BOARD_INCLUDE_RECOVERY_DTBO := true
+# NOTE: Update this path to match your device's recovery fstab location
+# Common paths: device/<vendor>/<device>/recovery.fstab
+#               device/generic/recovery.fstab
 TARGET_RECOVERY_FSTAB := device/generic/recovery.fstab
 
 # Kernel modules in recovery

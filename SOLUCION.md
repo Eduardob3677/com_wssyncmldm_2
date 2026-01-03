@@ -150,6 +150,25 @@ Tu dispositivo probablemente:
 3. No requiere separación vendor/system en boot
 4. Funciona mejor con particionado tradicional
 
+## Configuración Importante
+
+### TARGET_RECOVERY_FSTAB
+
+⚠️ **Importante**: El archivo `device.mk` usa una ruta genérica para recovery.fstab:
+
+```makefile
+TARGET_RECOVERY_FSTAB := device/generic/recovery.fstab
+```
+
+**Debes actualizar esta ruta** para que apunte al fstab de tu dispositivo:
+
+```makefile
+# Ejemplos de rutas comunes:
+TARGET_RECOVERY_FSTAB := device/samsung/dm2q/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/xiaomi/mido/recovery/root/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/<fabricante>/<modelo>/recovery.fstab
+```
+
 ## Archivos del Proyecto
 
 ```
