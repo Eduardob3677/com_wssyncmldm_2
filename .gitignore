@@ -4,4 +4,10 @@ dist/
 *.ap_
 *.dex
 *.orig
-build/
+
+# Temporary files
+/tmp/
+
+# Local configuration overrides (keep examples committed)
+profile_config_local.properties
+profile_config_local.json

@@ -1,0 +1,16 @@
+{
+  "profile": {
+    "name": "fotaagent",
+    "server": {
+      "address": "https://dms.ospserver.net/v1/device/magics",
+      "id": "x6g1q14r75",
+      "password": "T1NQIERNIFNIcnZIcg==",
+      "authType": "syncml:auth-md5"
+    },
+    "client": {
+      "id": "IMEI:352496803361546",
+      "password": "74V1gEt664mAKin01",
+      "authType": "syncml:auth-md5"
+    }
+  }
+}
